@@ -49,7 +49,7 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
 
             {/* Liens sociaux */}
             <div className="hidden lg:block">
-              <SocialLinks t={t} />
+              <SocialLinks />
             </div>
 
             {/* Sélecteur de langue */}
