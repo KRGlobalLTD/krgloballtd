@@ -4,7 +4,6 @@ import { useLanguage } from './hooks/useLanguage';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 
 function App() {
@@ -26,10 +25,9 @@ function App() {
       <main>
         <HeroSection t={t} isRTL={isRTL} />
         <AboutSection t={t} isRTL={isRTL} />
-        <ContactSection t={t} isRTL={isRTL} />
       </main>
-      
-      <Footer t={t} isRTL={isRTL} />
+
+      <Footer />
     </motion.div>
   );
 }
