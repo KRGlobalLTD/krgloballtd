@@ -30,13 +30,12 @@ const portfolioButtons = [
   },
 ];
 export function HeroSection({ t, isRTL }: HeroSectionProps) {
-  const [centeredButton, setCenteredButton] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const handleButtonClick = (buttonKey: string, url: string) => {
-    setCenteredButton(buttonKey);
-    // Délai pour l'animation avant redirection
+  const handleCardClick = (buttonKey: string, url: string) => {
+    setSelectedId(buttonKey);
     setTimeout(() => {
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
     }, 800);
   };
 
@@ -70,11 +69,10 @@ export function HeroSection({ t, isRTL }: HeroSectionProps) {
           {portfolioButtons.map((button, index) => (
             <motion.button
               key={button.key}
-              onClick={() => handleButtonClick(button.key, button.url)}
+              onClick={() => handleCardClick(button.key, button.url)}
               className={`absolute top-1/2 -translate-y-1/2 ${
                 button.position === 'left' ? '-left-32' : '-right-32'
               } ${button.className} bg-white/90 backdrop-blur-md border border-neutral-300 rounded-lg px-6 py-3 font-medium text-black hover:bg-black hover:text-white transition-all duration-300 shadow-md hover:shadow-lg z-10`}
-              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, x: button.position === 'left' ? -50 : 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -118,55 +116,66 @@ export function HeroSection({ t, isRTL }: HeroSectionProps) {
           </div>
 
           {/* Orbital Buttons */}
-          {orbitalButtons.map((button, index) => (
-            <motion.div
-              key={button.key}
-              className={`absolute transition-all duration-500 ${
-                centeredButton === button.key 
-                  ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 scale-110' 
-                  : ''
-              }`}
-              style={{
-                top: '50%',
-                left: '50%',
-                transformOrigin: '0 0',
-              }}
-              animate={centeredButton === button.key ? {} : {
-                rotate: button.angle + (index * 360) / orbitalButtons.length,
-              }}
-              transition={{
-                duration: 20 + index * 5,
-                repeat: centeredButton === button.key ? 0 : Infinity,
-                ease: 'linear',
-              }}
-            >
-              <motion.a
-                href={button.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleButtonClick(button.key, button.url);
-                }}
-                className={`group block w-32 h-12 -mt-6 -ml-16 bg-white/80 backdrop-blur-md border border-neutral-200 rounded-full shadow-md hover:shadow-lg hover:scale-105 hover:bg-white transition-all duration-300 flex items-center justify-center text-sm font-medium text-black hover:text-neutral-700 ${
-                  centeredButton === button.key ? 'bg-black text-white scale-125' : ''
+          {orbitalButtons.map((button, index) => {
+            const isSelected = selectedId === button.key;
+            return (
+              <motion.div
+                key={button.key}
+                className={`absolute transition-all duration-500 ${
+                  isSelected
+                    ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 scale-110'
+                    : ''
                 }`}
                 style={{
-                  transform: centeredButton === button.key 
-                    ? 'translate(0, 0)' 
-                    : `translate(${Math.cos((button.angle * Math.PI) / 180) * 150}px, ${Math.sin((button.angle * Math.PI) / 180) * 150}px)`,
+                  top: '50%',
+                  left: '50%',
+                  transformOrigin: '0 0',
                 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={t.hero.buttons[button.key as keyof typeof t.hero.buttons]}
+                animate={isSelected ? {} : {
+                  rotate: button.angle + (index * 360) / orbitalButtons.length,
+                }}
+                transition={{
+                  duration: 20 + index * 5,
+                  repeat: isSelected ? 0 : Infinity,
+                  ease: 'linear',
+                }}
               >
-                <span className="truncate px-2">
-                  {t.hero.buttons[button.key as keyof typeof t.hero.buttons]}
-                </span>
-                <ExternalLink size={12} className="opacity-60 group-hover:opacity-100 transition-opacity" />
-              </motion.a>
-            </motion.div>
-          ))}
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => handleCardClick(button.key, button.url)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleCardClick(button.key, button.url);
+                    }
+                  }}
+                  className={`group block w-32 h-12 -mt-6 -ml-16 bg-white/80 backdrop-blur-md border border-neutral-200 rounded-full shadow-md hover:shadow-lg hover:bg-white transition-all duration-300 flex items-center justify-center text-sm font-medium text-black ${
+                    isSelected ? 'bg-black text-white' : ''
+                  }`}
+                  style={{
+                    transform: isSelected
+                      ? 'translate(0, 0)'
+                      : `translate(${Math.cos((button.angle * Math.PI) / 180) * 150}px, ${Math.sin((button.angle * Math.PI) / 180) * 150}px)`,
+                  }}
+                >
+                  <span className="truncate px-2">
+                    {t.hero.buttons[button.key as keyof typeof t.hero.buttons]}
+                  </span>
+                  <a
+                    href={button.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="ml-1 opacity-60 hover:opacity-100 transition-opacity"
+                    aria-label={`Ouvrir ${t.hero.buttons[button.key as keyof typeof t.hero.buttons]} dans un nouvel onglet`}
+                  >
+                    <ExternalLink size={12} />
+                  </a>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* Mobile Grid for Buttons */}
@@ -182,8 +191,7 @@ export function HeroSection({ t, isRTL }: HeroSectionProps) {
               href={button.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white/80 backdrop-blur-md border border-neutral-200 rounded-lg p-4 hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center text-sm font-medium text-black hover:text-neutral-700"
-              whileHover={{ scale: 1.05 }}
+              className="group bg-white/80 backdrop-blur-md border border-neutral-200 rounded-lg p-4 hover:shadow-lg transition-all duration-300 flex items-center justify-center text-sm font-medium text-black hover:text-neutral-700"
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -203,8 +211,7 @@ export function HeroSection({ t, isRTL }: HeroSectionProps) {
               href={button.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white/80 backdrop-blur-md border border-neutral-200 rounded-lg p-4 hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center text-sm font-medium text-black hover:text-neutral-700"
-              whileHover={{ scale: 1.05 }}
+              className="group bg-white/80 backdrop-blur-md border border-neutral-200 rounded-lg p-4 hover:shadow-lg transition-all duration-300 flex items-center justify-center text-sm font-medium text-black hover:text-neutral-700"
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
