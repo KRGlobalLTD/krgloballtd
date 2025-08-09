@@ -1,4 +1,5 @@
 import React from 'react';
+import { SocialLinks } from './SocialLinks';
 
 export function Footer() {
   return (
@@ -14,14 +15,17 @@ export function Footer() {
             contact@krglobalsolutionsltd.com
           </a>
         </p>
-        <a
-          href="/legal"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline underline-offset-4 hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/20 rounded"
-        >
-          Mentions légales
-        </a>
+        <div className="flex items-center gap-4">
+          <SocialLinks />
+          <a
+            href="/legal"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/20 rounded"
+          >
+            Mentions légales
+          </a>
+        </div>
       </div>
     </footer>
   );
