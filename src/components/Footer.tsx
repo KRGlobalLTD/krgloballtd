@@ -4,7 +4,7 @@ import { SocialLinks } from './SocialLinks';
 export function Footer() {
   return (
     <footer className="bg-black text-white py-6">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between text-sm">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between items-start text-sm">
         <p>
           Contact :{' '}
           <a
@@ -15,8 +15,7 @@ export function Footer() {
             contact@krglobalsolutionsltd.com
           </a>
         </p>
-        <div className="flex items-center gap-4">
-          <SocialLinks />
+        <div className="flex flex-col items-end gap-2">
           <a
             href="/legal"
             target="_blank"
@@ -25,6 +24,7 @@ export function Footer() {
           >
             Mentions légales
           </a>
+          <SocialLinks />
         </div>
       </div>
     </footer>
