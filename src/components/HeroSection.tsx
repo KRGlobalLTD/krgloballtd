@@ -15,12 +15,12 @@ const orbitalButtons = [
   { key: 'services', url: 'https://services.krglobal.com' },
   { key: 'invest', url: 'https://invest.krglobal.com' },
 ];
-const radius = 150;
+const radius = 120;
 
 export function HeroSection({ t }: HeroSectionProps) {
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-20 bg-gradient-to-br from-white to-neutral-50">
+    <section className="min-h-screen flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Title and Subtitle */}
         <motion.div
@@ -30,7 +30,7 @@ export function HeroSection({ t }: HeroSectionProps) {
           className="mb-16"
         >
           <InfiniteHeadline />
-          <p className="mt-6 text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">
+          <p className="mt-6 fs-base md:text-xl text-neutral-600 max-w-3xl mx-auto break-words">
             {t.hero.subtitle}
           </p>
         </motion.div>
@@ -40,8 +40,7 @@ export function HeroSection({ t }: HeroSectionProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="relative mx-auto mb-16"
-          style={{ width: '360px', height: '360px' }}
+          className="relative mx-auto mb-16 w-72 h-72 sm:w-80 sm:h-80"
         >
           <div className="absolute inset-0 animate-orbit will-change-transform">
             {orbitalButtons.map((button, index) => {

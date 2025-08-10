@@ -9,16 +9,16 @@ interface AboutSectionProps {
 
 export function AboutSection({ t, isRTL }: AboutSectionProps) {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-10 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
+            <h2 className="fs-xl md:text-4xl font-bold text-black mb-6 break-words">
               {t.about.title}
             </h2>
           </motion.div>
@@ -29,7 +29,7 @@ export function AboutSection({ t, isRTL }: AboutSectionProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="text-lg text-neutral-600 leading-relaxed">
+            <p className="fs-base text-neutral-600 leading-relaxed break-words">
               {t.about.content}
             </p>
           </motion.div>

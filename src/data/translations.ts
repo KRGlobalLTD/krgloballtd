@@ -3,6 +3,10 @@ export type Language = 'fr' | 'en';
 export interface Translation {
   nav: {
     language: string;
+    menu: {
+      open: string;
+      close: string;
+    };
     social: {
       tiktok: string;
       instagram: string;
@@ -59,6 +63,7 @@ export const translations: Record<Language, Translation> = {
   fr: {
     nav: {
       language: 'Langue',
+      menu: { open: 'Ouvrir le menu', close: 'Fermer le menu' },
       social: {
         tiktok: 'TikTok',
         instagram: 'Instagram',
@@ -113,6 +118,7 @@ export const translations: Record<Language, Translation> = {
   en: {
     nav: {
       language: 'Language',
+      menu: { open: 'Open menu', close: 'Close menu' },
       social: {
         tiktok: 'TikTok',
         instagram: 'Instagram',
