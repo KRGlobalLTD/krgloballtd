@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import InfiniteHeadline from '@/components/InfiniteHeadline';
 
 interface HeroSectionProps {
   t: any;
-  isRTL: boolean;
 }
 
 const orbitalButtons = [
@@ -29,7 +29,7 @@ const portfolioButtons = [
     className: 'button type1'
   },
 ];
-export function HeroSection({ t, isRTL }: HeroSectionProps) {
+export function HeroSection({ t }: HeroSectionProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const handleCardClick = (buttonKey: string, url: string) => {
@@ -49,10 +49,8 @@ export function HeroSection({ t, isRTL }: HeroSectionProps) {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-black mb-6 leading-tight">
-            {t.hero.title}
-          </h1>
-          <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">
+          <InfiniteHeadline />
+          <p className="mt-6 text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">
             {t.hero.subtitle}
           </p>
         </motion.div>
