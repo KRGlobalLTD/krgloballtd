@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Translation } from '../data/translations';
 
 interface AboutSectionProps {
-  t: any;
+  t: Translation;
   isRTL: boolean;
 }
 

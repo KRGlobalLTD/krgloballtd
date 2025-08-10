@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
+import { Translation } from '../data/translations';
 
 interface HeroSectionProps {
-  t: any;
+  t: Translation;
 }
 
 const orbitalButtons = [
@@ -15,20 +16,6 @@ const orbitalButtons = [
   { key: 'invest', url: 'https://invest.krglobal.com', angle: 288 },
 ];
 
-const portfolioButtons = [
-  { 
-    key: 'karimPortfolio', 
-    url: 'https://www.karimhammouche.com/', 
-    position: 'left',
-    className: 'button type1'
-  },
-  { 
-    key: 'raphaelPortfolio', 
-    url: 'https://rthportofolio.com/', 
-    position: 'right',
-    className: 'button type1'
-  },
-];
 export function HeroSection({ t }: HeroSectionProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -63,24 +50,6 @@ export function HeroSection({ t }: HeroSectionProps) {
           className="relative mx-auto mb-16"
           style={{ width: '400px', height: '400px' }}
         >
-          {/* Boutons Portfolio - Gauche et Droite */}
-          {portfolioButtons.map((button, index) => (
-            <motion.button
-              key={button.key}
-              onClick={() => handleCardClick(button.key, button.url)}
-              className={`absolute top-1/2 -translate-y-1/2 ${
-                button.position === 'left' ? '-left-32' : '-right-32'
-              } ${button.className} bg-white/90 backdrop-blur-md border border-neutral-300 rounded-lg px-6 py-3 font-medium text-black hover:bg-black hover:text-white transition-all duration-300 shadow-md hover:shadow-lg z-10`}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: button.position === 'left' ? -50 : 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
-            >
-              <span className="btn-txt text-sm">
-                {t.hero.buttons[button.key as keyof typeof t.hero.buttons]}
-              </span>
-            </motion.button>
-          ))}
           {/* Central Planet */}
           <div className="absolute inset-0">
             <motion.div
@@ -176,52 +145,6 @@ export function HeroSection({ t }: HeroSectionProps) {
           })}
         </motion.div>
 
-        {/* Mobile Grid for Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:hidden"
-        >
-          {orbitalButtons.map((button, index) => (
-            <motion.a
-              key={button.key}
-              href={button.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-white/80 backdrop-blur-md border border-neutral-200 rounded-lg p-4 hover:shadow-lg transition-all duration-300 flex items-center justify-center text-sm font-medium text-black hover:text-neutral-700"
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-            >
-              <span className="text-center">
-                {t.hero.buttons[button.key as keyof typeof t.hero.buttons]}
-              </span>
-              <ExternalLink size={12} className="ml-2 opacity-60 group-hover:opacity-100 transition-opacity" />
-            </motion.a>
-          ))}
-          
-          {/* Portfolio buttons for mobile */}
-          {portfolioButtons.map((button, index) => (
-            <motion.a
-              key={button.key}
-              href={button.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-white/80 backdrop-blur-md border border-neutral-200 rounded-lg p-4 hover:shadow-lg transition-all duration-300 flex items-center justify-center text-sm font-medium text-black hover:text-neutral-700"
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-            >
-              <span className="text-center">
-                {t.hero.buttons[button.key as keyof typeof t.hero.buttons]}
-              </span>
-              <ExternalLink size={12} className="ml-2 opacity-60 group-hover:opacity-100 transition-opacity" />
-            </motion.a>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

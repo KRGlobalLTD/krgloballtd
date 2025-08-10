@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Globe, ChevronDown } from 'lucide-react';
-import { Language } from '../data/translations';
+import { Language, Translation } from '../data/translations';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface LanguageSelectorProps {
   currentLanguage: Language;
   onLanguageChange: (lang: Language) => void;
-  t: any;
+  t: Translation;
 }
 
 const languages = [
