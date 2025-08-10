@@ -6,7 +6,6 @@ import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import FabPortal from "@/components/FabPortal";
 import { ENABLE_DZ_PARTICLES } from './featureFlags';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
@@ -44,9 +43,7 @@ function App() {
       </main>
 
       <Footer />
-      <FabPortal>
-        <WhatsAppButton />
-      </FabPortal>
+      <WhatsAppButton />
       {ENABLE_DZ_PARTICLES && showParticles && (
         <React.Suspense fallback={null}>
           <DarkZoneParticles />
