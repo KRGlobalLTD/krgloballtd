@@ -57,6 +57,10 @@ export interface Translation {
       github: string;
     };
   };
+  portfolio: {
+    karim: string;
+    raphael: string;
+  };
 }
 
 export const translations: Record<Language, Translation> = {
@@ -114,6 +118,10 @@ export const translations: Record<Language, Translation> = {
         github: 'GitHub',
       },
     },
+    portfolio: {
+      karim: 'Portfolio Karim',
+      raphael: 'Portfolio Raphaël',
+    },
   },
   en: {
     nav: {
@@ -168,6 +176,10 @@ export const translations: Record<Language, Translation> = {
         linkedin: 'LinkedIn',
         github: 'GitHub',
       },
+    },
+    portfolio: {
+      karim: "Karim's Portfolio",
+      raphael: "Raphaël's Portfolio",
     },
   },
 };
