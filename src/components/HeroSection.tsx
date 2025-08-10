@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
 import { Translation } from '../data/translations';
+import HeroVideo from '@/components/HeroVideo';
 
 interface HeroSectionProps {
   t: Translation;
@@ -18,18 +19,6 @@ const orbitalButtons = [
 const radius = 120;
 
 export function HeroSection({ t }: HeroSectionProps) {
-  const vidRef = useRef<HTMLVideoElement | null>(null);
-  useEffect(() => {
-    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const v = vidRef.current;
-    if (!v) return;
-    if (mql.matches) {
-      v.removeAttribute('autoplay');
-      v.pause();
-      v.controls = true;
-    }
-  }, []);
-
   return (
     <section className="min-h-screen flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -45,23 +34,9 @@ export function HeroSection({ t }: HeroSectionProps) {
             {t.hero.subtitle}
           </p>
 
-          {/* --- Video (Supabase) placed directly under the subtitle --- */}
+          {/* --- Video placed directly under the subtitle --- */}
           <div className="mt-6 md:mt-8">
-            <div className="relative overflow-hidden rounded-2xl shadow-lg">
-              <video
-                ref={vidRef}
-                className="h-auto w-full object-cover"
-                playsInline
-                muted
-                loop
-                autoPlay
-                preload="metadata"
-                src="https://rseczxloemshthscxuoa.supabase.co/storage/v1/object/public/videologo/Cinematic_blackandwhite_space_202508092340_.mov"
-                aria-label="KR Global – cinematic intro"
-              >
-                Votre navigateur ne supporte pas la vidéo HTML5.
-              </video>
-            </div>
+            <HeroVideo />
           </div>
         </motion.div>
 
