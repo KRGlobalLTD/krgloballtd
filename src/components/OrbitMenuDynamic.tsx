@@ -67,39 +67,56 @@ export default function OrbitMenuDynamic({
   }, [items.length, gap, baseRadius.sm, baseRadius.md, baseRadius.lg]);
 
   return (
-    <div
-      ref={containerRef}
-      className={`relative flex items-center justify-center ${className}`}
-      onMouseEnter={() => setActive(-1)}
-      onMouseLeave={() => setActive(null)}
-    >
-      <div className="orbit-rotor">
-        {items.map((it, i) => (
-          <OrbitItem
-            key={i}
-            refEl={(el) => (itemRefs.current[i] = el)}
-            angle={angles[i]}
-            label={it.label}
-            href={it.href}
-            external={it.external}
-            ariaLabel={it.ariaLabel ?? it.label}
-            r={radius.lg}
-            active={active === i}
-            setActive={setActive}
-          />
-        ))}
+    <div className={`flex md:block flex-col items-center gap-3 md:gap-0 ${className}`}>
+      <div
+        ref={containerRef}
+        className="relative hidden md:flex items-center justify-center"
+        onMouseEnter={() => setActive(-1)}
+        onMouseLeave={() => setActive(null)}
+      >
+        <div className="orbit-rotor">
+          {items.map((it, i) => (
+            <OrbitItem
+              key={i}
+              refEl={(el) => (itemRefs.current[i] = el)}
+              angle={angles[i]}
+              label={it.label}
+              href={it.href}
+              external={it.external}
+              ariaLabel={it.ariaLabel ?? it.label}
+              r={radius.lg}
+              active={active === i}
+              setActive={setActive}
+            />
+          ))}
+        </div>
+
+        <style jsx global>{`
+          @keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+          .orbit-rotor {
+            position: absolute; inset: 0;
+            animation: orbit-spin 30s linear infinite;
+            will-change: transform;
+          }
+          .relative:hover .orbit-rotor, .relative:focus-within .orbit-rotor { animation-play-state: paused; }
+          @media (prefers-reduced-motion: reduce) { .orbit-rotor { animation: none; } }
+        `}</style>
       </div>
 
-      <style jsx global>{`
-        @keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .orbit-rotor {
-          position: absolute; inset: 0;
-          animation: orbit-spin 30s linear infinite;
-          will-change: transform;
-        }
-        .relative:hover .orbit-rotor, .relative:focus-within .orbit-rotor { animation-play-state: paused; }
-        @media (prefers-reduced-motion: reduce) { .orbit-rotor { animation: none; } }
-      `}</style>
+      <div className="flex md:hidden flex-col items-center gap-3">
+        {items.map((it, i) => (
+          <a
+            key={i}
+            href={it.href}
+            aria-label={it.ariaLabel ?? it.label}
+            target={it.external ? '_blank' : undefined}
+            rel={it.external ? 'noopener noreferrer' : undefined}
+            className="min-h-11 px-4 rounded-full bg-white text-black shadow-md flex items-center justify-center w-full max-w-xs"
+          >
+            <span className="truncate">{it.label}</span>
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
@@ -137,8 +154,8 @@ function OrbitItem({
           aria-label={ariaLabel}
           target={external ? '_blank' : undefined}
           rel={external ? 'noopener noreferrer' : undefined}
-          className="group inline-flex items-center justify-center rounded-2xl bg-white text-black shadow-md
-                     px-4 py-2 min-h-[40px] select-none transition-all duration-200 ease-out
+          className="group inline-flex items-center justify-center rounded-full bg-white text-black shadow-md
+                     px-4 py-2 min-h-11 select-none transition-all duration-200 ease-out
                      focus:outline-none focus-visible:ring-2 focus-visible:ring-black/30"
           onMouseEnter={() => setActive(1)}
           onMouseLeave={() => setActive(-1)}

@@ -47,8 +47,8 @@ export function HeroSection({ t }: HeroSectionProps) {
   // const currentRadius = radius - 20 * proximity;
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50 dz-bg dz-fg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50 dz-bg dz-fg md:min-h-screen">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 text-center">
         {/* Title and Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ export function HeroSection({ t }: HeroSectionProps) {
           className="mb-16"
         >
           <InfiniteHeadline />
-          <p className="mt-6 fs-base md:text-xl text-neutral-600 max-w-3xl mx-auto break-words">
+          <p className="mt-6 text-[clamp(0.95rem,2.6vw,1.05rem)] leading-relaxed text-neutral-600 max-w-3xl mx-auto break-words hyphens-auto">
             {t.hero.subtitle}
           </p>
 
@@ -72,7 +72,7 @@ export function HeroSection({ t }: HeroSectionProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="relative mx-auto mb-16 w-72 h-72 sm:w-80 sm:h-80 mt-14 md:mt-20 lg:mt-24"
+          className="relative mx-auto mb-16 w-full max-w-[18rem] aspect-square sm:max-w-[20rem] mt-14 md:mt-20 lg:mt-24"
         >
           {/* <div className="absolute inset-0 animate-orbit will-change-transform">
             {orbitalButtons.map((button, index) => {
