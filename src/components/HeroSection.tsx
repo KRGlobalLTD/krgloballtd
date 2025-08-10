@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
 import { Translation } from '../data/translations';
-import HeroVideo from '@/components/HeroVideo';
+import HeroVideoURL from '@/components/HeroVideoURL';
 
 interface HeroSectionProps {
   t: Translation;
@@ -36,7 +36,7 @@ export function HeroSection({ t }: HeroSectionProps) {
 
           {/* --- Video placed directly under the subtitle --- */}
           <div className="mt-6 md:mt-8">
-            <HeroVideo />
+            <HeroVideoURL />
           </div>
         </motion.div>
 
