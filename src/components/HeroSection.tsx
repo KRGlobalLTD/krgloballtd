@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
@@ -18,6 +18,17 @@ const orbitalButtons = [
 const radius = 120;
 
 export function HeroSection({ t }: HeroSectionProps) {
+  const vidRef = useRef<HTMLVideoElement | null>(null);
+  useEffect(() => {
+    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const v = vidRef.current;
+    if (!v) return;
+    if (mql.matches) {
+      v.removeAttribute('autoplay');
+      v.pause();
+      v.controls = true;
+    }
+  }, []);
 
   return (
     <section className="min-h-screen flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50">
@@ -33,6 +44,25 @@ export function HeroSection({ t }: HeroSectionProps) {
           <p className="mt-6 fs-base md:text-xl text-neutral-600 max-w-3xl mx-auto break-words">
             {t.hero.subtitle}
           </p>
+
+          {/* --- Video (Supabase) placed directly under the subtitle --- */}
+          <div className="mt-6 md:mt-8">
+            <div className="relative overflow-hidden rounded-2xl shadow-lg">
+              <video
+                ref={vidRef}
+                className="h-auto w-full object-cover"
+                playsInline
+                muted
+                loop
+                autoPlay
+                preload="metadata"
+                src="https://rseczxloemshthscxuoa.supabase.co/storage/v1/object/public/videologo/Cinematic_blackandwhite_space_202508092340_.mov"
+                aria-label="KR Global – cinematic intro"
+              >
+                Votre navigateur ne supporte pas la vidéo HTML5.
+              </video>
+            </div>
+          </div>
         </motion.div>
 
         {/* Interactive Planet with Orbital Buttons */}
@@ -40,7 +70,7 @@ export function HeroSection({ t }: HeroSectionProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="relative mx-auto mb-16 w-72 h-72 sm:w-80 sm:h-80"
+          className="relative mx-auto mb-16 w-72 h-72 sm:w-80 sm:h-80 mt-14 md:mt-20 lg:mt-24"
         >
           <div className="absolute inset-0 animate-orbit will-change-transform">
             {orbitalButtons.map((button, index) => {
