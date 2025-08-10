@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { LanguageSelector } from './LanguageSelector';
 import { SocialLinks } from './SocialLinks';
 import { Language } from '../data/translations';
+import BrandKR from '@/components/BrandKR';
 
 interface HeaderProps {
   currentLanguage: Language;
@@ -16,9 +17,7 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-medium tracking-wide text-black">
-              KR Global LTD
-            </h1>
+            <BrandKR />
           </div>
           
           <div className="flex items-center gap-6">
