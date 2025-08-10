@@ -29,6 +29,19 @@ body {
   animation: orbital 20s linear infinite;
 }
 
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit 22s linear infinite;
+}
+
 /* Focus styles for accessibility */
 .focus-visible:focus {
   outline: 2px solid #000;
