@@ -23,7 +23,7 @@ function App() {
       />
       
       <main>
-        <HeroSection t={t} isRTL={isRTL} />
+        <HeroSection t={t} />
         <AboutSection t={t} isRTL={isRTL} />
       </main>
 
