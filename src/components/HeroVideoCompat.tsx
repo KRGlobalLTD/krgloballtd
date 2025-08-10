@@ -58,12 +58,12 @@ export default function HeroVideoCompat() {
   const mark = () => setStarted(true);
 
   return (
-    <div className="relative w-full aspect-video min-h-[260px] sm:min-h-[360px] overflow-hidden rounded-xl bg-black">
+    <div className="relative w-full overflow-hidden px-4 aspect-video rounded-xl bg-black">
       {/* Skeleton noir tant que la lecture n’a pas démarré */}
       {!started && <div aria-hidden className="absolute inset-0 bg-black z-0" />}
       <video
         ref={vref}
-        className="w-full h-full object-cover z-[1]"
+        className="w-full h-auto object-cover md:object-contain z-[1]"
         autoPlay
         muted
         loop

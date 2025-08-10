@@ -5,6 +5,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Preflight anti-overflow for mobile */
+html,
+body {
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  min-width: 0;
+}
+
 /* Base Styles */
 html {
   scroll-behavior: smooth;
