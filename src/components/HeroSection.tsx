@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+// import { ExternalLink } from 'lucide-react';
+import OrbitMenuDynamic from '@/components/OrbitMenuDynamic';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
 import { Translation } from '../data/translations';
 import HeroVideoMinimal from '@/components/HeroVideoMinimal';
@@ -9,41 +10,41 @@ interface HeroSectionProps {
   t: Translation;
 }
 
-const orbitalButtons = [
-  { key: 'blog', url: 'https://blog.krglobal.com' },
-  { key: 'boutique', url: 'https://laboutique.krglobal.com' },
-  { key: 'equipe', url: 'https://equipe.krglobal.com' },
-  { key: 'services', url: 'https://services.krglobal.com' },
-  { key: 'invest', url: 'https://invest.krglobal.com' },
-];
-const radius = 120;
-const attractionThreshold = 160; // distance in px for attraction effect
+// const orbitalButtons = [
+//   { key: 'blog', url: 'https://blog.krglobal.com' },
+//   { key: 'boutique', url: 'https://laboutique.krglobal.com' },
+//   { key: 'equipe', url: 'https://equipe.krglobal.com' },
+//   { key: 'services', url: 'https://services.krglobal.com' },
+//   { key: 'invest', url: 'https://invest.krglobal.com' },
+// ];
+// const radius = 120;
+// const attractionThreshold = 160; // distance in px for attraction effect
 
 export function HeroSection({ t }: HeroSectionProps) {
   // Track pointer proximity to center for attraction effect
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [proximity, setProximity] = useState(0);
+  // const containerRef = useRef<HTMLDivElement>(null);
+  // const [proximity, setProximity] = useState(0);
 
-  const handlePointer = (x: number, y: number) => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const dx = x - (rect.left + rect.width / 2);
-    const dy = y - (rect.top + rect.height / 2);
-    const distance = Math.sqrt(dx * dx + dy * dy);
-    const p = Math.max(0, 1 - distance / attractionThreshold);
-    setProximity(p);
-  };
+  // const handlePointer = (x: number, y: number) => {
+  //   const rect = containerRef.current?.getBoundingClientRect();
+  //   if (!rect) return;
+  //   const dx = x - (rect.left + rect.width / 2);
+  //   const dy = y - (rect.top + rect.height / 2);
+  //   const distance = Math.sqrt(dx * dx + dy * dy);
+  //   const p = Math.max(0, 1 - distance / attractionThreshold);
+  //   setProximity(p);
+  // };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    handlePointer(e.clientX, e.clientY);
-  };
+  // const handleMouseMove = (e: React.MouseEvent) => {
+  //   handlePointer(e.clientX, e.clientY);
+  // };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    const touch = e.touches[0];
-    handlePointer(touch.clientX, touch.clientY);
-  };
+  // const handleTouchMove = (e: React.TouchEvent) => {
+  //   const touch = e.touches[0];
+  //   handlePointer(touch.clientX, touch.clientY);
+  // };
 
-  const currentRadius = radius - 20 * proximity;
+  // const currentRadius = radius - 20 * proximity;
 
   return (
     <section className="min-h-screen flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50 dz-bg dz-fg">
@@ -72,13 +73,8 @@ export function HeroSection({ t }: HeroSectionProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
           className="relative mx-auto mb-16 w-72 h-72 sm:w-80 sm:h-80 mt-14 md:mt-20 lg:mt-24"
-          ref={containerRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={() => setProximity(0)}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={() => setProximity(0)}
         >
-          <div className="absolute inset-0 animate-orbit will-change-transform">
+          {/* <div className="absolute inset-0 animate-orbit will-change-transform">
             {orbitalButtons.map((button, index) => {
               const angle = (index / orbitalButtons.length) * 360;
               return (
@@ -106,7 +102,17 @@ export function HeroSection({ t }: HeroSectionProps) {
                 </motion.a>
               );
             })}
-          </div>
+          </div> */}
+          <OrbitMenuDynamic
+            className="absolute inset-0"
+            items={[
+              { label: t.hero.buttons.services, href: 'https://services.krglobal.com', external: true },
+              { label: t.hero.buttons.invest, href: 'https://invest.krglobal.com', external: true },
+              { label: t.hero.buttons.blog, href: 'https://blog.krglobal.com', external: true },
+              { label: t.hero.buttons.boutique, href: 'https://laboutique.krglobal.com', external: true },
+              { label: t.hero.buttons.equipe, href: 'https://equipe.krglobal.com', external: true },
+            ]}
+          />
 
           {/* Central Planet */}
           <div className="absolute inset-0 flex items-center justify-center">
