@@ -11,22 +11,22 @@ interface SocialLinksProps {
 const socialLinks = [
   {
     name: 'TikTok',
-    url: 'https://tiktok.com/@krglobal',
+    url: 'https://www.tiktok.com/@krglobalsolutions?_t=ZS-8yl0PL5V6CQ&_r=1',
     icon: FaTiktok
   },
   {
     name: 'Instagram',
-    url: 'https://instagram.com/krglobal',
+    url: 'https://www.instagram.com/krgloballtd?igsh=c29uN3VyNGFyb2xv&utm_source=qr',
     icon: FaInstagram
   },
   {
     name: 'Fiverr',
-    url: 'https://fiverr.com/karimhammouche',
+    url: 'https://www.fiverr.com/krgloballtd/buying?source=avatar_menu_profile',
     icon: SiFiverr
   },
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/company/krglobal',
+    url: 'https://www.linkedin.com/in/kr-global-solutions-417a71379?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
     icon: FaLinkedin
   },
   {
