@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 function App() {
   const { currentLanguage, changeLanguage, t, isRTL } = useLanguage();
@@ -28,6 +29,7 @@ function App() {
       </main>
 
       <Footer />
+      <WhatsAppButton />
     </motion.div>
   );
 }
