@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "check:mobile": "npm run lint && npm run build && node tests/no-overflow.mjs"
+    "check:mobile": "npm run lint && npm run build && node tests/no-overflow.mjs",
+    "dz:rollback": "git restore -SW .",
+    "dz:verify": "node scripts/dz-verify.mjs"
   },
   "dependencies": {
     "framer-motion": "^10.16.16",

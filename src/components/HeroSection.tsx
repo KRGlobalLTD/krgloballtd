@@ -20,7 +20,7 @@ const radius = 120;
 
 export function HeroSection({ t }: HeroSectionProps) {
   return (
-    <section className="min-h-screen flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50">
+    <section className="min-h-screen flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50 dz-bg dz-fg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Title and Subtitle */}
         <motion.div
