@@ -2,7 +2,7 @@ import React from 'react';
 import { LanguageSelector } from './LanguageSelector';
 import SocialLinks from "@/components/SocialLinks";
 import { Language, Translation } from '../data/translations';
-import KRLogo from '@/components/KRLogo';
+import KRLogoIdlePortal from '@/components/KRLogoIdlePortal';
 import { DarkZoneToggle } from './DarkZoneToggle';
 
 interface HeaderProps {
@@ -13,10 +13,13 @@ interface HeaderProps {
 
 export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-200 dz-card dz-border dz-fg">
+    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-neutral-200 dz-card dz-border dz-fg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3 min-w-0">
-          <KRLogo t={t} />
+          <KRLogoIdlePortal
+            onClickK={() => window.open("https://ton-lien-karim", "_blank")}
+            onClickR={() => window.open("https://ton-lien-raphael", "_blank")}
+          />
           <LanguageSelector
             currentLanguage={currentLanguage}
             onLanguageChange={onLanguageChange}
