@@ -1,6 +1,6 @@
 import React from 'react';
 import { LanguageSelector } from './LanguageSelector';
-import { SocialLinks } from './SocialLinks';
+import SocialIcons from "@/components/SocialIcons";
 import { Language, Translation } from '../data/translations';
 import BrandKR from '@/components/BrandKR';
 
@@ -22,7 +22,7 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
           <div className="flex items-center gap-6">
             {/* Liens sociaux */}
             <div className="hidden lg:block">
-              <SocialLinks />
+              <SocialIcons />
             </div>
 
             {/* Sélecteur de langue */}
