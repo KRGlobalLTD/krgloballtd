@@ -20,8 +20,6 @@ export interface Translation {
       blog: string;
       equipe: string;
       invest: string;
-      karimPortfolio: string;
-      raphaelPortfolio: string;
     };
   };
   about: {
@@ -78,8 +76,6 @@ export const translations: Record<Language, Translation> = {
         blog: 'Blog & Actus',
         equipe: 'Notre Équipe',
         invest: 'Espace Investisseurs',
-        karimPortfolio: 'Portfolio Karim',
-        raphaelPortfolio: 'Portfolio Raphaël',
       },
     },
     about: {
@@ -134,8 +130,6 @@ export const translations: Record<Language, Translation> = {
         blog: 'Blog & News',
         equipe: 'Our Team',
         invest: 'Investor Space',
-        karimPortfolio: 'Karim Portfolio',
-        raphaelPortfolio: 'Raphaël Portfolio',
       },
     },
     about: {

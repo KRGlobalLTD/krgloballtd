@@ -2,13 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { LanguageSelector } from './LanguageSelector';
 import { SocialLinks } from './SocialLinks';
-import { Language } from '../data/translations';
+import { Language, Translation } from '../data/translations';
 import BrandKR from '@/components/BrandKR';
 
 interface HeaderProps {
   currentLanguage: Language;
   onLanguageChange: (lang: Language) => void;
-  t: any;
+  t: Translation;
 }
 
 export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
