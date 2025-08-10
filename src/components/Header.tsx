@@ -51,8 +51,15 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
               <SocialLinks />
             </div>
 
+            <a
+              href="/mentions-legales"
+              className="hidden lg:block hover:underline"
+            >
+              Mentions légales
+            </a>
+
             {/* Sélecteur de langue */}
-            <LanguageSelector 
+            <LanguageSelector
               currentLanguage={currentLanguage}
               onLanguageChange={onLanguageChange}
               t={t}

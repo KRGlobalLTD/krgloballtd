@@ -17,9 +17,7 @@ export function Footer() {
         </p>
         <div className="flex flex-col items-end gap-2">
           <a
-            href="/legal"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/mentions-legales"
             className="underline underline-offset-4 hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/20 rounded"
           >
             Mentions légales
