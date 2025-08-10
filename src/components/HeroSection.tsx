@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
@@ -17,8 +17,34 @@ const orbitalButtons = [
   { key: 'invest', url: 'https://invest.krglobal.com' },
 ];
 const radius = 120;
+const attractionThreshold = 160; // distance in px for attraction effect
 
 export function HeroSection({ t }: HeroSectionProps) {
+  // Track pointer proximity to center for attraction effect
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [proximity, setProximity] = useState(0);
+
+  const handlePointer = (x: number, y: number) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const dx = x - (rect.left + rect.width / 2);
+    const dy = y - (rect.top + rect.height / 2);
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const p = Math.max(0, 1 - distance / attractionThreshold);
+    setProximity(p);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    handlePointer(e.clientX, e.clientY);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    handlePointer(touch.clientX, touch.clientY);
+  };
+
+  const currentRadius = radius - 20 * proximity;
+
   return (
     <section className="min-h-screen flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50 dz-bg dz-fg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -46,28 +72,38 @@ export function HeroSection({ t }: HeroSectionProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
           className="relative mx-auto mb-16 w-72 h-72 sm:w-80 sm:h-80 mt-14 md:mt-20 lg:mt-24"
+          ref={containerRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={() => setProximity(0)}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={() => setProximity(0)}
         >
           <div className="absolute inset-0 animate-orbit will-change-transform">
             {orbitalButtons.map((button, index) => {
               const angle = (index / orbitalButtons.length) * 360;
               return (
-                <a
+                <motion.a
                   key={button.key}
                   href={button.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  className="group absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                   style={{
-                    transform: `translate(-50%, -50%) rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
+                    transform: `translate(-50%, -50%) rotate(${angle}deg) translate(${currentRadius}px) rotate(-${angle}deg)`,
+                    transition: 'transform 0.3s ease-out',
                   }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95, transition: { type: 'spring', stiffness: 500, damping: 20 } }}
                 >
-                  <span className="group block w-32 h-12 -mt-6 -ml-16 bg-white/80 backdrop-blur-md border border-neutral-200 rounded-full shadow-md hover:shadow-lg hover:bg-white transition-all duration-300 flex items-center justify-center text-sm font-medium text-black">
-                    <span className="truncate px-2">
+                  <span className="relative block w-32 h-12 -mt-6 -ml-16 bg-white/80 backdrop-blur-md border border-neutral-200 rounded-full shadow-md flex items-center justify-center text-sm font-medium text-black overflow-hidden before:absolute before:inset-0 before:rounded-full before:ring-2 before:ring-white/60 before:opacity-0 before:scale-100 group-hover:before:opacity-100 group-hover:before:scale-110 group-focus:before:opacity-100 group-focus:before:scale-110 group-active:before:opacity-100 group-active:before:scale-110 before:transition-all">
+                    <span className="truncate pl-6 pr-2">
                       {t.hero.buttons[button.key as keyof typeof t.hero.buttons]}
                     </span>
-                    <ExternalLink size={12} className="ml-1 opacity-60 group-hover:opacity-100 transition-opacity" />
+                    <ExternalLink size={12} className="ml-1 opacity-60 group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100 transition-opacity" />
+                    <span className="pointer-events-none absolute left-2 opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100 group-active:translate-x-0 group-active:opacity-100 transition-all">→</span>
                   </span>
-                </a>
+                  <span className="pointer-events-none absolute left-1/2 top-full mt-1 -translate-x-1/2 text-xs text-black opacity-0 group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0 group-active:opacity-100 group-active:translate-y-0 translate-y-1 transition-all">Voir plus</span>
+                </motion.a>
               );
             })}
           </div>
@@ -79,6 +115,26 @@ export function HeroSection({ t }: HeroSectionProps) {
               transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
               className="w-40 h-40 bg-gradient-to-br from-neutral-800 to-black rounded-full shadow-2xl relative overflow-hidden"
             >
+              {/* Pulsing outline */}
+              <motion.div
+                className="absolute inset-0 rounded-full border-2 border-white/30"
+                animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.2, 0.5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              />
+
+              {/* Floating particles */}
+              <div className="absolute inset-0">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <motion.span
+                    key={i}
+                    className={`absolute w-1 h-1 rounded-full ${i % 2 ? 'bg-white' : 'bg-black'}`}
+                    style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%` }}
+                    animate={{ y: ['0%', '-20%', '0%'], opacity: [1, 0, 1] }}
+                    transition={{ duration: 6 + Math.random() * 4, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                ))}
+              </div>
+
               {/* Planet surface details */}
               <div className="absolute inset-0 opacity-30">
                 <div className="w-8 h-8 bg-white rounded-full absolute top-6 left-8"></div>
