@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 type Intensity = "strong" | "max"; // "max" = plus visible (par défaut)
 
 function usePortalTooltip(label: string) {
-  const anchorRef = useRef<HTMLSpanElement | null>(null);
+  const anchorRef = useRef<HTMLAnchorElement | null>(null);
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
 
@@ -50,13 +50,13 @@ function variantsFor(intensity: Intensity) {
 }
 
 export default function KRLogoKR({
-  onClickK,
-  onClickR,
+  hrefK,
+  hrefR,
   className = "",
   intensity = "max" as Intensity, // Mouvement BIEN visible par défaut
 }: {
-  onClickK?: () => void;
-  onClickR?: () => void;
+  hrefK?: string;
+  hrefR?: string;
   className?: string;
   intensity?: Intensity;
 }) {
@@ -80,8 +80,11 @@ export default function KRLogoKR({
   return (
     <span className={`relative flex items-center gap-1 font-bold text-sm md:text-base ${className}`}>
       {/* K (phase 0) */}
-      <motion.span
+      <motion.a
         ref={k.anchorRef}
+        href={hrefK}
+        target="_blank"
+        rel="noopener noreferrer"
         className="cursor-pointer select-none"
         variants={vK}
         animate="animate"
@@ -91,16 +94,18 @@ export default function KRLogoKR({
         onFocus={() => { setExclusive("K"); k.setOpen(true); k.update(); }}
         onMouseLeave={() => { if (exclusive === "K") { k.setOpen(false); setExclusive(null); } }}
         onBlur={() => { if (exclusive === "K") { k.setOpen(false); setExclusive(null); } }}
-        onClick={onClickK}
       >
         K
-      </motion.span>
+      </motion.a>
 
       <span aria-hidden>/</span>
 
       {/* R (phase décalée) */}
-      <motion.span
+      <motion.a
         ref={r.anchorRef}
+        href={hrefR}
+        target="_blank"
+        rel="noopener noreferrer"
         className="cursor-pointer select-none"
         variants={vR}
         animate="animate"
@@ -111,10 +116,9 @@ export default function KRLogoKR({
         onFocus={() => { setExclusive("R"); r.setOpen(true); r.update(); }}
         onMouseLeave={() => { if (exclusive === "R") { r.setOpen(false); setExclusive(null); } }}
         onBlur={() => { if (exclusive === "R") { r.setOpen(false); setExclusive(null); } }}
-        onClick={onClickR}
       >
         R
-      </motion.span>
+      </motion.a>
 
       {/* Tooltips exclusives via Portal (jamais coupées par le header) */}
       {exclusive === "K" && <k.Tooltip />}

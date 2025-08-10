@@ -18,8 +18,8 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
         <div className="flex items-center gap-3 min-w-0">
           <KRLogoKR
             intensity="max"
-            onClickK={() => window.open("https://lien-portfolio-karim", "_blank")}
-            onClickR={() => window.open("https://lien-portfolio-raphael", "_blank")}
+            hrefK="https://www.karimhammouche.com/"
+            hrefR="https://rthportofolio.com/"
           />
           <LanguageSelector
             currentLanguage={currentLanguage}
