@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
@@ -9,22 +9,15 @@ interface HeroSectionProps {
 }
 
 const orbitalButtons = [
-  { key: 'boutique', url: 'https://laboutique.krglobal.com', angle: 0 },
-  { key: 'services', url: 'https://services.krglobal.com', angle: 72 },
-  { key: 'blog', url: 'https://blog.krglobal.com', angle: 144 },
-  { key: 'equipe', url: 'https://equipe.krglobal.com', angle: 216 },
-  { key: 'invest', url: 'https://invest.krglobal.com', angle: 288 },
+  { key: 'blog', url: 'https://blog.krglobal.com' },
+  { key: 'boutique', url: 'https://laboutique.krglobal.com' },
+  { key: 'equipe', url: 'https://equipe.krglobal.com' },
+  { key: 'services', url: 'https://services.krglobal.com' },
+  { key: 'invest', url: 'https://invest.krglobal.com' },
 ];
+const radius = 150;
 
 export function HeroSection({ t }: HeroSectionProps) {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-
-  const handleCardClick = (buttonKey: string, url: string) => {
-    setSelectedId(buttonKey);
-    setTimeout(() => {
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }, 800);
-  };
 
   return (
     <section className="min-h-screen flex items-center justify-center py-20 bg-gradient-to-br from-white to-neutral-50">
@@ -48,14 +41,39 @@ export function HeroSection({ t }: HeroSectionProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
           className="relative mx-auto mb-16"
-          style={{ width: '400px', height: '400px' }}
+          style={{ width: '360px', height: '360px' }}
         >
+          <div className="absolute inset-0 animate-orbit will-change-transform">
+            {orbitalButtons.map((button, index) => {
+              const angle = (index / orbitalButtons.length) * 360;
+              return (
+                <a
+                  key={button.key}
+                  href={button.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  style={{
+                    transform: `translate(-50%, -50%) rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
+                  }}
+                >
+                  <span className="group block w-32 h-12 -mt-6 -ml-16 bg-white/80 backdrop-blur-md border border-neutral-200 rounded-full shadow-md hover:shadow-lg hover:bg-white transition-all duration-300 flex items-center justify-center text-sm font-medium text-black">
+                    <span className="truncate px-2">
+                      {t.hero.buttons[button.key as keyof typeof t.hero.buttons]}
+                    </span>
+                    <ExternalLink size={12} className="ml-1 opacity-60 group-hover:opacity-100 transition-opacity" />
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+
           {/* Central Planet */}
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-              className="w-40 h-40 mx-auto mt-32 bg-gradient-to-br from-neutral-800 to-black rounded-full shadow-2xl relative overflow-hidden"
+              className="w-40 h-40 bg-gradient-to-br from-neutral-800 to-black rounded-full shadow-2xl relative overflow-hidden"
             >
               {/* Planet surface details */}
               <div className="absolute inset-0 opacity-30">
@@ -63,7 +81,7 @@ export function HeroSection({ t }: HeroSectionProps) {
                 <div className="w-4 h-4 bg-white rounded-full absolute bottom-12 right-6"></div>
                 <div className="w-6 h-6 bg-white rounded-full absolute top-16 right-12"></div>
               </div>
-              
+
               {/* Stylized Hand Silhouette */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <svg
@@ -81,68 +99,6 @@ export function HeroSection({ t }: HeroSectionProps) {
               </div>
             </motion.div>
           </div>
-
-          {/* Orbital Buttons */}
-          {orbitalButtons.map((button, index) => {
-            const isSelected = selectedId === button.key;
-            return (
-              <motion.div
-                key={button.key}
-                className={`absolute transition-all duration-500 ${
-                  isSelected
-                    ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 scale-110'
-                    : ''
-                }`}
-                style={{
-                  top: '50%',
-                  left: '50%',
-                  transformOrigin: '0 0',
-                }}
-                animate={isSelected ? {} : {
-                  rotate: button.angle + (index * 360) / orbitalButtons.length,
-                }}
-                transition={{
-                  duration: 20 + index * 5,
-                  repeat: isSelected ? 0 : Infinity,
-                  ease: 'linear',
-                }}
-              >
-                <div
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => handleCardClick(button.key, button.url)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      handleCardClick(button.key, button.url);
-                    }
-                  }}
-                  className={`group block w-32 h-12 -mt-6 -ml-16 bg-white/80 backdrop-blur-md border border-neutral-200 rounded-full shadow-md hover:shadow-lg hover:bg-white transition-all duration-300 flex items-center justify-center text-sm font-medium text-black ${
-                    isSelected ? 'bg-black text-white' : ''
-                  }`}
-                  style={{
-                    transform: isSelected
-                      ? 'translate(0, 0)'
-                      : `translate(${Math.cos((button.angle * Math.PI) / 180) * 150}px, ${Math.sin((button.angle * Math.PI) / 180) * 150}px)`,
-                  }}
-                >
-                  <span className="truncate px-2">
-                    {t.hero.buttons[button.key as keyof typeof t.hero.buttons]}
-                  </span>
-                  <a
-                    href={button.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="ml-1 opacity-60 hover:opacity-100 transition-opacity"
-                    aria-label={`Ouvrir ${t.hero.buttons[button.key as keyof typeof t.hero.buttons]} dans un nouvel onglet`}
-                  >
-                    <ExternalLink size={12} />
-                  </a>
-                </div>
-              </motion.div>
-            );
-          })}
         </motion.div>
 
       </div>
