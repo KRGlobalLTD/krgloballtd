@@ -7,7 +7,6 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-start gap-6 text-sm">
         <div className="flex flex-col gap-2 w-full sm:w-auto">
           <p className="break-words">
-            Contact :{' '}
             <a
               href="mailto:contact@krglobalsolutionsltd.com"
               className="underline underline-offset-4 hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/20 rounded"
