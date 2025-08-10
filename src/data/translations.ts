@@ -3,6 +3,7 @@ export type Language = 'fr' | 'en';
 export interface Translation {
   nav: {
     language: string;
+    darkZone: string; // SAFE-GUARD: additive key for Dark Zone label
     menu: {
       open: string;
       close: string;
@@ -67,6 +68,7 @@ export const translations: Record<Language, Translation> = {
   fr: {
     nav: {
       language: 'Langue',
+      darkZone: 'Dark Zone',
       menu: { open: 'Ouvrir le menu', close: 'Fermer le menu' },
       social: {
         tiktok: 'TikTok',
@@ -126,6 +128,7 @@ export const translations: Record<Language, Translation> = {
   en: {
     nav: {
       language: 'Language',
+      darkZone: 'Dark Zone',
       menu: { open: 'Open menu', close: 'Close menu' },
       social: {
         tiktok: 'TikTok',

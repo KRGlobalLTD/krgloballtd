@@ -92,3 +92,38 @@ html[dir="rtl"] .space-x-2 > * + * {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* Dark Zone utility layer */
+body {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dark-zone {
+  --dz-bg: #000;
+  --dz-fg: #fff;
+  --dz-border: #2a2a2a;
+  --dz-muted: #111;
+}
+
+.dark-zone .dz-bg {
+  background: var(--dz-bg);
+}
+
+.dark-zone .dz-fg {
+  color: var(--dz-fg);
+}
+
+.dark-zone .dz-card {
+  background-color: var(--dz-muted);
+  border: 1px solid var(--dz-border);
+}
+
+.dark-zone .dz-border {
+  border-color: var(--dz-border);
+}
+
+.dark-zone .dz-glow:hover,
+.dark-zone .dz-glow:focus-visible {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.25),
+    0 0 24px rgba(255, 255, 255, 0.12);
+}
