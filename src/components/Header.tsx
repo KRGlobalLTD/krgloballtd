@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { LanguageSelector } from './LanguageSelector';
 import { SocialLinks } from './SocialLinks';
 import { Language, Translation } from '../data/translations';
@@ -21,42 +20,10 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
           </div>
           
           <div className="flex items-center gap-6">
-            {/* Logo KR animé */}
-            <motion.a
-              href="https://fiverr.com/karimhammouche"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:block"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <motion.span
-                className="text-2xl font-bold tracking-widest text-black"
-                animate={{ 
-                  scale: [1, 1.1, 1], 
-                  rotate: [0, 5, -5, 0] 
-                }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                KR
-              </motion.span>
-            </motion.a>
-
             {/* Liens sociaux */}
             <div className="hidden lg:block">
               <SocialLinks />
             </div>
-
-            <a
-              href="/mentions-legales"
-              className="hidden lg:block hover:underline"
-            >
-              Mentions légales
-            </a>
 
             {/* Sélecteur de langue */}
             <LanguageSelector
