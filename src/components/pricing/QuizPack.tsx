@@ -78,7 +78,7 @@ export default function QuizPack() {
             <a
               href={waHref(planLabel)}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex h-10 items-center justify-center rounded-lg border border-[#25D366]/40 px-4 text-sm font-semibold text-[#25D366] hover:bg-[#25D366] hover:text-black"
             >
               WhatsApp
