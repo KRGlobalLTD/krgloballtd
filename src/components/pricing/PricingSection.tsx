@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import InlineInquiryForm from "./InlineInquiryForm";
 import { CALENDAR_URL, WHATSAPP_NUMBER, WHATSAPP_MSG_DEFAULT } from "@/lib/siteConfig";
 
 type Feature = { label: string };
@@ -127,13 +128,16 @@ function Card({
   plan,
   open,
   onToggle,
+  htmlId,
 }: {
   plan: Plan;
   open: boolean;
   onToggle: () => void;
+  htmlId: string;
 }) {
   return (
     <motion.article
+      id={htmlId}
       className="relative flex flex-col justify-between rounded-2xl border border-[#2A2A2A] bg-[#121212] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(0,0,0,0.35)] hover:outline hover:outline-1 hover:outline-white/10"
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -237,6 +241,7 @@ function Card({
 export default function PricingSection() {
   const [openId, setOpenId] = useState<string | null>(null);
   const toggle = (id: string) => setOpenId((cur) => (cur === id ? null : id));
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <section aria-labelledby="pricing-title" className="w-full bg-[#0B0B0C] py-12">
@@ -255,17 +260,26 @@ export default function PricingSection() {
           <p className="mx-auto mt-2 max-w-2xl text-sm text-gray-300">
             Choisissez un pack selon votre objectif. Les tarifs sont “à partir de” et ajustés selon votre contexte.
           </p>
-          <a
-            href="#quiz-pack"
+          <button
+            onClick={() => setShowForm((v) => !v)}
             className="mt-3 inline-flex h-9 items-center justify-center rounded-lg border border-white/15 bg-white/5 px-3 text-xs text-gray-200 hover:bg-white hover:text-black"
+            aria-expanded={showForm}
           >
             🔎 Quel pack est fait pour vous ?
-          </a>
+          </button>
         </header>
+
+        {showForm && <InlineInquiryForm />}
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {plans.map((p) => (
-            <Card key={p.id} plan={p} open={openId === p.id} onToggle={() => toggle(p.id)} />
+            <Card
+              key={p.id}
+              plan={p}
+              open={openId === p.id}
+              onToggle={() => toggle(p.id)}
+              htmlId={`plan-${p.id}`}
+            />
           ))}
         </div>
 

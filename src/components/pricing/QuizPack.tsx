@@ -37,6 +37,11 @@ function waHref(planName: string) {
   return `https://wa.me/${n}?text=${msg}`;
 }
 
+function scrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export default function QuizPack() {
   const [step, setStep] = useState(0);
   const [scores, setScores] = useState<{ [k in PlanId]: number }>({
@@ -55,8 +60,6 @@ export default function QuizPack() {
     const plan = (Object.keys(scores) as PlanId[]).reduce((a, b) => (scores[b] > scores[a] ? b : a), "starter");
     const planLabel =
       plan === "starter" ? "Pack Découverte" : plan === "growth" ? "Pack Croissance" : "Pack Sur‑mesure";
-    const href =
-      plan === "starter" ? "#commande-starter" : plan === "growth" ? "#commande-growth" : "#devis-sur-mesure";
     return (
       <section id="quiz-pack" className="w-full bg-[#0B0B0C] py-12">
         <div className="mx-auto max-w-3xl px-4 text-center text-gray-200">
@@ -65,12 +68,12 @@ export default function QuizPack() {
             Nous vous conseillons le <span className="font-semibold">{planLabel}</span>.
           </p>
           <div className="flex justify-center gap-3">
-            <a
-              href={href}
+            <button
+              onClick={() => scrollToId(`plan-${plan}`)}
               className="inline-flex h-10 items-center justify-center rounded-lg border border-white/30 px-4 text-sm font-semibold text-white hover:bg-white hover:text-black"
             >
               Voir le pack
-            </a>
+            </button>
             <a
               href={waHref(planLabel)}
               target="_blank"
