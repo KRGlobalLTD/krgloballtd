@@ -43,15 +43,14 @@ function App() {
       <main>
         <HeroSection t={t} />
         {SHOW_PRICING && <PricingSection />}
-        <AboutSection t={t} isRTL={isRTL} />
         {SHOW_PRICING && <CategoriesGrid />}
         {/* ===== Section FAQ ===== */}
         <Suspense fallback={null}>
           <FAQAccordion locale="fr" />
         </Suspense>
+        <Footer />
+        <AboutSection t={t} isRTL={isRTL} />
       </main>
-
-      <Footer />
       {ENABLE_DZ_PARTICLES && showParticles && (
         <Suspense fallback={null}>
           <DarkZoneParticles />
