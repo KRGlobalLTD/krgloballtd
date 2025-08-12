@@ -54,7 +54,7 @@ export function HeroSection({ t }: HeroSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-16"
+          className="mb-8"
         >
           <InfiniteHeadline />
           <p className="mt-6 text-[clamp(0.95rem,2.6vw,1.05rem)] leading-relaxed text-neutral-600 max-w-3xl mx-auto break-words hyphens-auto">
@@ -72,7 +72,7 @@ export function HeroSection({ t }: HeroSectionProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="relative mx-auto mb-16 w-full max-w-[18rem] aspect-square sm:max-w-[20rem] mt-14 md:mt-20 lg:mt-24"
+          className="relative mx-auto mb-8 w-full max-w-[18rem] aspect-square sm:max-w-[20rem] mt-8 md:mt-12 lg:mt-16"
         >
           {/* <div className="absolute inset-0 animate-orbit will-change-transform">
             {orbitalButtons.map((button, index) => {

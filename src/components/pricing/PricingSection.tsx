@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import InlineInquiryForm from "./InlineInquiryForm";
 import { CALENDAR_URL, WHATSAPP_NUMBER, WHATSAPP_MSG_DEFAULT } from "@/lib/siteConfig";
 
 type Feature = { label: string };
@@ -103,8 +102,6 @@ const plans: Plan[] = [
   },
 ];
 
-const PROMO_ENABLED = true;
-const PROMO_TEXT = "Offre limitée : livraison express offerte jusqu’au 30/09";
 
 const wa = (msg?: string) => {
   const n = WHATSAPP_NUMBER.replace(/\D/g, "");
@@ -241,17 +238,10 @@ function Card({
 export default function PricingSection() {
   const [openId, setOpenId] = useState<string | null>(null);
   const toggle = (id: string) => setOpenId((cur) => (cur === id ? null : id));
-  const [showForm, setShowForm] = useState(false);
 
   return (
-    <section aria-labelledby="pricing-title" className="w-full bg-[#0B0B0C] py-12">
+    <section aria-labelledby="pricing-title" className="w-full bg-[#0B0B0C] pt-8 pb-12">
       <div className="mx-auto max-w-6xl px-4">
-
-        {PROMO_ENABLED && (
-          <div className="mb-6 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm text-gray-200">
-            {PROMO_TEXT}
-          </div>
-        )}
 
         <header className="mb-8 text-center">
           <h2 id="pricing-title" className="text-3xl font-extrabold tracking-tight text-white">
@@ -261,15 +251,17 @@ export default function PricingSection() {
             Choisissez un pack selon votre objectif. Les tarifs sont “à partir de” et ajustés selon votre contexte.
           </p>
           <button
-            onClick={() => setShowForm((v) => !v)}
+            onClick={() => {
+              const el = document.querySelector('#pack-quiz');
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (history?.replaceState) history.replaceState(null, '', '#pack-quiz');
+            }}
             className="mt-3 inline-flex h-9 items-center justify-center rounded-lg border border-white/15 bg-white/5 px-3 text-xs text-gray-200 hover:bg-white hover:text-black"
-            aria-expanded={showForm}
+            aria-controls="pack-quiz"
           >
-            🔎 Quel pack est fait pour vous ?
+            Quel pack est fait pour vous ?
           </button>
         </header>
-
-        {showForm && <InlineInquiryForm />}
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {plans.map((p) => (

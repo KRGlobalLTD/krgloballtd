@@ -5,7 +5,6 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import PricingSection from '@/components/pricing/PricingSection';
 import QuizPack from '@/components/pricing/QuizPack';
-import RotatingLinks from '@/components/RotatingLinks';
 import FAQSection from '@/components/FAQSection';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
@@ -42,7 +41,6 @@ function App() {
 
       <main>
         <HeroSection t={t} />
-        <RotatingLinks />
         <PricingSection />
         <QuizPack />
         <FAQSection />
