@@ -5,12 +5,9 @@ export function Footer() {
   const pathname =
     typeof window !== 'undefined' ? window.location.pathname : '';
   const prefix = pathname.startsWith('/en') ? '/en' : '';
-  const isEN = prefix === '/en';
 
   const links = [
-    { label: isEN ? "Book a call" : "Prendre rendez-vous", href: `${prefix}/book` },
     { label: "Contacts", href: "/contact" },
-    { label: "Global Solutions", href: "/" },
     { label: "Mentions légales", href: `${prefix}/mentions-legales` },
   ];
 
