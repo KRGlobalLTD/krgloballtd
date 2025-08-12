@@ -7,6 +7,7 @@ import PricingSection from '@/components/pricing/PricingSection';
 import QuizPack from '@/components/pricing/QuizPack';
 import FAQSection from '@/components/FAQSection';
 import { AboutSection } from './components/AboutSection';
+import { AboutBallWithLinks } from '@/components/AboutBallWithLinks';
 import { Footer } from './components/Footer';
 import { ENABLE_DZ_PARTICLES } from '@/featureFlags';
 
@@ -45,6 +46,7 @@ function App() {
         <QuizPack />
         <FAQSection />
         <AboutSection t={t} isRTL={isRTL} />
+        <AboutBallWithLinks t={t} />
       </main>
 
       <Footer />
