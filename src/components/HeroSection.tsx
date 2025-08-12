@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import OrbitMenuDynamic from '@/components/OrbitMenuDynamic';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
 import { Translation } from '../data/translations';
-import HeroVideoCompat from '@/components/HeroVideoCompat';
+import HeroVideoDesktopFix from '@/components/HeroVideoDesktopFix';
 
 interface HeroSectionProps {
   t: Translation;
@@ -63,7 +63,7 @@ export function HeroSection({ t }: HeroSectionProps) {
 
           {/* --- Video placed directly under the subtitle --- */}
           <div className="mt-6 md:mt-8">
-            <HeroVideoCompat />
+            <HeroVideoDesktopFix />
           </div>
         </motion.div>
 
