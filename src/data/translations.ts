@@ -27,10 +27,10 @@ export interface Translation {
       invest: string;
     };
   };
-    about: {
-      title: string;
-      content: string;
-    };
+  about: {
+    title: string;
+    content: string;
+  };
   common: {
     links: {
       blog: string;
@@ -65,6 +65,63 @@ export interface Translation {
       fiverr: string;
       linkedin: string;
       github: string;
+    };
+  };
+  offers: {
+    title: string;
+    subtitle: string;
+    whichPack: string;
+    tag: { basique: string; populaire: string; premium: string };
+    badge: {
+      fast: string;
+      basic: string;
+      onboarding: string;
+      site: string;
+      social: string;
+      ai: string;
+      integrations: string;
+      aiAdvanced: string;
+      automations: string;
+    };
+    cta: {
+      startNow: string;
+      bookPack: string;
+      quote: string;
+      bookMeeting: string;
+      whatsapp: string;
+    };
+    starter: {
+      title: string;
+      subtitle: string;
+      price: string;
+      perMonth: string;
+      b1: string;
+      b2: string;
+      b3: string;
+      b4: string;
+      b5: string;
+    };
+    growth: {
+      title: string;
+      subtitle: string;
+      price: string;
+      perMonth: string;
+      b1: string;
+      b2: string;
+      b3: string;
+      b4: string;
+      b5: string;
+    };
+    custom: {
+      title: string;
+      subtitle: string;
+      price: string;
+      perMonth: string;
+      b1: string;
+      b2: string;
+      b3: string;
+      b4: string;
+      b5: string;
     };
   };
   portfolio: {
@@ -138,6 +195,63 @@ export const translations: Record<Language, Translation> = {
         github: 'GitHub',
       },
     },
+    offers: {
+      title: 'Offres & Prestations',
+      subtitle: 'Choisissez un pack selon votre objectif. Les tarifs sont “à partir de” et ajustés selon votre contexte.',
+      whichPack: 'Quel pack est fait pour vous ?',
+      tag: { basique: 'Basique', populaire: 'Populaire', premium: 'Premium' },
+      badge: {
+        fast: 'Rapide',
+        basic: 'Basique',
+        onboarding: 'Prise en main',
+        site: 'Site',
+        social: 'Social',
+        ai: 'IA',
+        integrations: 'Intégrations',
+        aiAdvanced: 'IA avancée',
+        automations: 'Automations',
+      },
+      cta: {
+        startNow: 'Je commence aujourd’hui',
+        bookPack: 'Réserver ce pack',
+        quote: 'Obtenir mon devis gratuit',
+        bookMeeting: 'Réserver un RDV',
+        whatsapp: 'WhatsApp',
+      },
+      starter: {
+        title: 'Pack Découverte',
+        subtitle: 'Lancez-vous dès aujourd’hui',
+        price: 'à partir de 49€',
+        perMonth: '',
+        b1: 'Visuel unique (logo simple / bannière / 3 posts)',
+        b2: 'Landing 1 section (Héros + CTA + formulaire)',
+        b3: 'Mini-workflow (Form → Email)',
+        b4: 'Montage vidéo ≤45s ou 10 retouches photo',
+        b5: 'Visio 30 min + notes d’actions',
+      },
+      growth: {
+        title: 'Pack Croissance',
+        subtitle: 'Passez à la vitesse supérieure',
+        price: 'à partir de 249€',
+        perMonth: 'ou 3× 89€/mois',
+        b1: 'Mini-site 3 sections (SEO base + analytics)',
+        b2: '15 posts + 1 micro‑vidéo (calendrier Notion)',
+        b3: 'Workflow utile (Form → Sheets + email + notif)',
+        b4: 'Vidéo ≤90s ou 20 retouches (cut + transitions)',
+        b5: 'Audit express + plan 30/60/90 (visio 45 min)',
+      },
+      custom: {
+        title: 'Pack Sur‑mesure',
+        subtitle: 'Votre projet clé en main',
+        price: 'à partir de 799€',
+        perMonth: 'ou 3× 270€/mois',
+        b1: 'Site 5–7 sections / Petite boutique (Stripe + 2 automatisations)',
+        b2: 'Gestion réseaux 1 mois (30 posts, 4 reels, 1 ads)',
+        b3: 'Ops simple (x3 workflows) + dashboard Notion/Sheets',
+        b4: 'Agent IA avancé (RAG + multi‑langues)',
+        b5: 'Setup express (checklists + modèles + banques)',
+      },
+    },
     portfolio: {
       karim: 'Portfolio Karim',
       raphael: 'Portfolio Raphaël',
@@ -205,6 +319,63 @@ export const translations: Record<Language, Translation> = {
         fiverr: 'Fiverr',
         linkedin: 'LinkedIn',
         github: 'GitHub',
+      },
+    },
+    offers: {
+      title: 'Offers & Services',
+      subtitle: 'Pick a pack for your goal. Prices are “from” and adjusted to your context.',
+      whichPack: 'Which pack is right for you?',
+      tag: { basique: 'Basic', populaire: 'Popular', premium: 'Premium' },
+      badge: {
+        fast: 'Fast',
+        basic: 'Basic',
+        onboarding: 'Onboarding',
+        site: 'Website',
+        social: 'Social',
+        ai: 'AI',
+        integrations: 'Integrations',
+        aiAdvanced: 'Advanced AI',
+        automations: 'Automations',
+      },
+      cta: {
+        startNow: 'Start today',
+        bookPack: 'Book this pack',
+        quote: 'Get my free quote',
+        bookMeeting: 'Book a meeting',
+        whatsapp: 'WhatsApp',
+      },
+      starter: {
+        title: 'Starter Pack',
+        subtitle: 'Get launched today',
+        price: 'from €49',
+        perMonth: '',
+        b1: 'One visual (simple logo / banner / 3 posts)',
+        b2: 'One-section landing (Hero + CTA + form)',
+        b3: 'Mini-workflow (Form → Email)',
+        b4: 'Video edit ≤45s or 10 photo edits',
+        b5: '30-min call + action notes',
+      },
+      growth: {
+        title: 'Growth Pack',
+        subtitle: 'Shift into higher gear',
+        price: 'from €249',
+        perMonth: 'or 3× €89/mo',
+        b1: 'Mini-site 3 sections (basic SEO + analytics)',
+        b2: '15 posts + 1 micro-video (Notion calendar)',
+        b3: 'Useful workflow (Form → Sheets + email + notif)',
+        b4: 'Video ≤90s or 20 edits (cuts + transitions)',
+        b5: 'Express audit + 30/60/90 plan (45-min call)',
+      },
+      custom: {
+        title: 'Custom Pack',
+        subtitle: 'Turn-key project',
+        price: 'from €799',
+        perMonth: 'or 3× €270/mo',
+        b1: '5–7-section site / Small shop (Stripe + 2 automations)',
+        b2: '1-month social mgmt (30 posts, 4 reels, 1 ad)',
+        b3: 'Simple ops (x3 workflows) + Notion/Sheets dashboard',
+        b4: 'Advanced AI agent (RAG + multi-language)',
+        b5: 'Express setup (checklists + templates + banks)',
       },
     },
     portfolio: {

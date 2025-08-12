@@ -5,7 +5,7 @@ function readJSON(file: string) {
   return JSON.parse(fs.readFileSync(file, 'utf-8'));
 }
 
-function writeJSON(file: string, data: any) {
+function writeJSON(file: string, data: unknown) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 }
 
