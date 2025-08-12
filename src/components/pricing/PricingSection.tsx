@@ -223,7 +223,7 @@ function Card({
         <a
           href={wa(`Bonjour KR Global, je veux avancer sur ${plan.name}.`)}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="ml-2 inline-flex h-10 items-center justify-center rounded-xl border border-[#25D366]/40 px-3 text-sm font-semibold text-[#25D366] hover:bg-[#25D366] hover:text-black"
           aria-label="WhatsApp devis rapide"
         >
@@ -281,10 +281,10 @@ export default function PricingSection() {
           <a
             href={wa("Bonjour KR Global, je souhaite un devis express via WhatsApp.")}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="inline-flex h-10 items-center justify-center rounded-xl border border-[#25D366]/40 px-4 text-sm font-semibold text-[#25D366] hover:bg-[#25D366] hover:text-black"
           >
-            Écrire sur WhatsApp
+            WhatsApp
           </a>
         </div>
       </div>

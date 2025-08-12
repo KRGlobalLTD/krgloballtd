@@ -25,12 +25,17 @@ export function PackCard({
       </ul>
       <div className="mt-5 flex gap-3 flex-wrap">
         {ctas.map((c, i) => (
-          <a key={i} href={c.href}
-             className={
-               c.variant === "outline"
-                 ? "rounded-xl border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
-                 : "rounded-xl bg-white text-neutral-900 px-4 py-2 text-sm font-semibold hover:bg-white/90"
-             }>
+          <a
+            key={i}
+            href={c.href}
+            target={c.href.includes("wa.me") ? "_blank" : undefined}
+            rel={c.href.includes("wa.me") ? "noopener noreferrer" : undefined}
+            className={
+              c.variant === "outline"
+                ? "rounded-xl border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
+                : "rounded-xl bg-white text-neutral-900 px-4 py-2 text-sm font-semibold hover:bg-white/90"
+            }
+          >
             {c.label}
           </a>
         ))}

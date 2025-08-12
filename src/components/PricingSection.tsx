@@ -25,7 +25,7 @@ export default function PricingSection() {
             ]}
             ctas={[
               {label:"Je commence aujourd’hui", href:"#", variant:"primary"},
-              {label:"WhatsApp", href:"https://wa.me/", variant:"outline"},
+              {label:"WhatsApp", href:"https://wa.me/33743561304", variant:"outline"},
             ]}
           />
 
@@ -44,7 +44,7 @@ export default function PricingSection() {
             ]}
             ctas={[
               {label:"Réserver ce pack", href:"#", variant:"outline"},
-              {label:"WhatsApp", href:"https://wa.me/", variant:"outline"},
+              {label:"WhatsApp", href:"https://wa.me/33743561304", variant:"outline"},
             ]}
           />
 
@@ -63,7 +63,7 @@ export default function PricingSection() {
             ]}
             ctas={[
               {label:"Obtenir mon devis gratuit", href:"#", variant:"outline"},
-              {label:"WhatsApp", href:"https://wa.me/", variant:"outline"},
+              {label:"WhatsApp", href:"https://wa.me/33743561304", variant:"outline"},
             ]}
           />
         </div>

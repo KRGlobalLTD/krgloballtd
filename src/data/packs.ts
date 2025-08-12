@@ -30,7 +30,7 @@ export const packsFR: Pack[] = [
     ],
     ctas: [
       { label: "Je commence aujourd’hui", href: "#contact", variant: "primary" },
-      { label: "WhatsApp", href: "https://wa.me/<WHATSAPP_NUMBER>", variant: "outline" }
+      { label: "WhatsApp", href: "https://wa.me/33743561304", variant: "outline" }
     ],
     footerLinks: [{ label: "Voir tout le contenu", href: "#pack-decouverte" }]
   },
@@ -51,7 +51,7 @@ export const packsFR: Pack[] = [
     ],
     ctas: [
       { label: "Réserver ce pack", href: "#contact", variant: "primary" },
-      { label: "WhatsApp", href: "https://wa.me/<WHATSAPP_NUMBER>", variant: "outline" }
+      { label: "WhatsApp", href: "https://wa.me/33743561304", variant: "outline" }
     ],
     footerLinks: [{ label: "Voir tout le contenu", href: "#pack-croissance" }]
   },
@@ -72,7 +72,7 @@ export const packsFR: Pack[] = [
     ],
     ctas: [
       { label: "Obtenir mon devis gratuit", href: "#devis", variant: "primary" },
-      { label: "Écrire sur WhatsApp", href: "https://wa.me/<WHATSAPP_NUMBER>", variant: "outline" }
+      { label: "WhatsApp", href: "https://wa.me/33743561304", variant: "outline" }
     ],
     footerLinks: [
       { label: "Réserver un RDV", href: "#rdv" },
@@ -98,7 +98,7 @@ export const packsEN: Pack[] = [
     ],
     ctas: [
       { label: "Start now", href: "#contact", variant: "primary" },
-      { label: "WhatsApp", href: "https://wa.me/<WHATSAPP_NUMBER>", variant: "outline" }
+      { label: "WhatsApp", href: "https://wa.me/33743561304", variant: "outline" }
     ],
     footerLinks: [{ label: "See all details", href: "#pack-decouverte" }]
   },
@@ -119,7 +119,7 @@ export const packsEN: Pack[] = [
     ],
     ctas: [
       { label: "Book this pack", href: "#contact", variant: "primary" },
-      { label: "WhatsApp", href: "https://wa.me/<WHATSAPP_NUMBER>", variant: "outline" }
+      { label: "WhatsApp", href: "https://wa.me/33743561304", variant: "outline" }
     ],
     footerLinks: [{ label: "See all details", href: "#pack-croissance" }]
   },
@@ -140,7 +140,7 @@ export const packsEN: Pack[] = [
     ],
     ctas: [
       { label: "Get my free quote", href: "#devis", variant: "primary" },
-      { label: "Message on WhatsApp", href: "https://wa.me/<WHATSAPP_NUMBER>", variant: "outline" }
+      { label: "Message on WhatsApp", href: "https://wa.me/33743561304", variant: "outline" }
     ],
     footerLinks: [
       { label: "Book a meeting", href: "#rdv" },
