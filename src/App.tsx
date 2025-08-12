@@ -11,6 +11,7 @@ import PricingCards from '@/components/pricing/PricingCards';
 import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
+// FAQ
 const FAQAccordion = React.lazy(() => import('@/components/faq/FAQAccordion'));
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         {SHOW_PRICING && (
           <>
             <CategoriesGrid />
+            {/* FAQ */}
             <React.Suspense fallback={null}>
               <FAQAccordion locale={currentLanguage} />
             </React.Suspense>
