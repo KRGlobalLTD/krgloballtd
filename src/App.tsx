@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
+import PricingSection from './components/PricingSection';
 import CategoriesGrid from '@/components/Pricing/CategoriesGrid';
 import FAQAccordion from '@/components/FAQ/FAQAccordion';
 import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
@@ -40,6 +41,7 @@ function App() {
       
       <main>
         <HeroSection t={t} />
+        {SHOW_PRICING && <PricingSection />}
         <AboutSection t={t} isRTL={isRTL} />
         {SHOW_PRICING && (
           <>
