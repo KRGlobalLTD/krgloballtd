@@ -21,6 +21,14 @@ export function Footer() {
           >
             Mentions légales
           </a>
+          <a
+            href="/book"
+            className="underline underline-offset-4 hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/20 rounded"
+          >
+            {typeof document !== 'undefined' && document.documentElement.lang?.startsWith('fr')
+              ? 'Prendre rendez-vous'
+              : 'Book a call'}
+          </a>
         </div>
         <div className="flex flex-col sm:items-end gap-2 w-full min-w-0">
           <SocialLinks variant="footer" size={22} className="justify-center sm:justify-end" />

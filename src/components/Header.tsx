@@ -5,6 +5,7 @@ import { Language, Translation } from '../data/translations';
 import KRLogoKR from "@/components/KRLogoKR";
 import { DarkZoneToggle } from './DarkZoneToggle';
 import { Menu, X } from "lucide-react";
+const CalendlyPopupButton = React.lazy(() => import("@/components/CalendlyPopup").then(m => ({ default: m.CalendlyPopupButton })));
 
 interface HeaderProps {
   currentLanguage: Language;
@@ -32,6 +33,16 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
           <DarkZoneToggle label={t.nav.darkZone} />
         </div>
         <div className="flex items-center justify-end flex-1 overflow-hidden gap-2">
+          <React.Suspense fallback={null}>
+            <CalendlyPopupButton
+              label={
+                typeof document !== 'undefined' && document.documentElement.lang?.startsWith('fr')
+                  ? 'Réserver un appel'
+                  : 'Book a call'
+              }
+              className="px-4 py-2 rounded-2xl border text-sm"
+            />
+          </React.Suspense>
           <SocialLinks variant="header" size={20} className="justify-end hidden md:flex" />
           <button
             className="md:hidden inline-flex items-center justify-center min-h-11 px-4 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50"
