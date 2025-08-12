@@ -63,7 +63,7 @@ export default function QuizPack() {
     return (
       <section className="w-full bg-[#0B0B0C] py-12">
         <div className="mx-auto max-w-3xl px-4 text-center text-gray-200">
-          <span id="pack-quiz" className="block relative -top-20" />
+          <span id="quiz-budget" className="block relative -top-20" />
           <h2 className="text-2xl font-bold text-white mb-4">Votre pack recommandé</h2>
           <p className="mb-6">
             Nous vous conseillons le <span className="font-semibold">{planLabel}</span>.
@@ -93,7 +93,7 @@ export default function QuizPack() {
     <section className="w-full bg-[#0B0B0C] py-12">
       <div className="mx-auto max-w-3xl px-4 text-center text-gray-200">
         {/* anchor for smooth scroll from Offres CTA */}
-        <span id="pack-quiz" className="block relative -top-20" />
+        <span id="quiz-budget" className="block relative -top-20" />
         <h2 className="text-2xl font-bold text-white mb-6">Quel pack est fait pour vous ?</h2>
         <p className="mb-4 text-sm">{current.q}</p>
         <div className="flex flex-col items-center gap-3">

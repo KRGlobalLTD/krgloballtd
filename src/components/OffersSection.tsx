@@ -19,7 +19,7 @@ export default function OffersSection() {
           <h2 className="text-3xl sm:text-4xl font-bold">{tr("offers.title")}</h2>
           <p className="mt-2 text-base sm:text-lg opacity-80">{tr("offers.subtitle")}</p>
           <div className="mt-4">
-            <a href="#pack-quiz" className="inline-block rounded-2xl border px-4 py-2 text-sm">
+            <a href="#quiz-budget" className="inline-block rounded-2xl border px-4 py-2 text-sm">
               {tr("offers.whichPack")}
             </a>
           </div>
