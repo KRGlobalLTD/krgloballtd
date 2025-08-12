@@ -28,6 +28,9 @@ export function Footer() {
               </li>
             ))}
           </ul>
+          <p className="text-sm">
+            Contact : <a href="mailto:karim@karimhammouche.com" className="underline">karim@karimhammouche.com</a>
+          </p>
         </div>
         <div className="flex flex-col sm:items-end gap-2 w-full min-w-0">
           <SocialLinks variant="footer" size={22} className="justify-center sm:justify-end" />
