@@ -1,3 +1,1 @@
-import { CAL_999 } from '@/featureFlags';
-
-export const calendlyLink = () => CAL_999;
+export const calendlyLink = () => process.env.NEXT_PUBLIC_CAL_LINK_999 || '#';

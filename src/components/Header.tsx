@@ -1,14 +1,19 @@
 import React from 'react';
-import LanguageSwitcher from './LanguageSwitcher';
+import { LanguageSelector } from './LanguageSelector';
 import SocialLinks from "@/components/SocialLinks";
+import { Language, Translation } from '../data/translations';
 import KRLogoKR from "@/components/KRLogoKR";
 import { DarkZoneToggle } from './DarkZoneToggle';
 import { Menu, X } from "lucide-react";
-import BookCta from "@/components/BookCta";
-import { useTranslation } from 'react-i18next';
+const CalendlyPopupButton = React.lazy(() => import("@/components/CalendlyPopup").then(m => ({ default: m.CalendlyPopupButton })));
 
-export function Header() {
-  const { t } = useTranslation();
+interface HeaderProps {
+  currentLanguage: Language;
+  onLanguageChange: (lang: Language) => void;
+  t: Translation;
+}
+
+export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
   const [open, setOpen] = React.useState(false);
   return (
     <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-neutral-200 dz-card dz-border dz-fg">
@@ -19,17 +24,30 @@ export function Header() {
             hrefK="https://www.karimhammouche.com/"
             hrefR="https://rthportofolio.com/"
           />
-          <LanguageSwitcher />
+          <LanguageSelector
+            currentLanguage={currentLanguage}
+            onLanguageChange={onLanguageChange}
+            t={t}
+          />
           {/* SAFE-GUARD: isolated toggle to avoid interfering with existing nav */}
-          <DarkZoneToggle label={t('nav.darkZone')} />
+          <DarkZoneToggle label={t.nav.darkZone} />
         </div>
         <div className="flex items-center justify-end flex-1 overflow-hidden gap-2">
-          <BookCta />
+          <React.Suspense fallback={null}>
+            <CalendlyPopupButton
+              label={
+                typeof document !== 'undefined' && document.documentElement.lang?.startsWith('fr')
+                  ? 'Réserver un appel'
+                  : 'Book a call'
+              }
+              className="px-4 py-2 rounded-2xl border text-sm"
+            />
+          </React.Suspense>
           <SocialLinks variant="header" size={20} className="justify-end hidden md:flex" />
           <button
             className="md:hidden inline-flex items-center justify-center min-h-11 px-4 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50"
             onClick={() => setOpen((o) => !o)}
-            aria-label={open ? t('nav.menu.close') : t('nav.menu.open')}
+            aria-label={open ? 'Fermer le menu' : 'Menu'}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>

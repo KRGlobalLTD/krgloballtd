@@ -71,7 +71,7 @@ export default function HeroVideo() {
         {/* Ajouter WEBM si dispo pour Chrome/Android */}
         <source src="/videos/hero.webm" type="video/webm" />
         <source src="/videos/hero.mp4" type="video/mp4" />
-        Your browser does not support the video.
+        Votre navigateur ne supporte pas la vidéo.
       </video>
     </div>
   );
