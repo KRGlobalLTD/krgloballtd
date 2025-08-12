@@ -1,5 +1,4 @@
 "use client";
-// Accessible FAQ accordion component
 import React from "react";
 import { faqFR, faqEN, QA } from "@/data/faq";
 

@@ -9,10 +9,11 @@ import PricingSection from './components/PricingSection';
 import CategoriesGrid from '@/components/Pricing/CategoriesGrid';
 import PricingCards from '@/components/pricing/PricingCards';
 import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
+import dynamic from "next/dynamic";
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
 // FAQ
-const FAQAccordion = React.lazy(() => import('@/components/faq/FAQAccordion'));
+const FAQAccordion = dynamic(() => import('@/components/faq/FAQAccordion'), { ssr: false });
 
 function App() {
   const { currentLanguage, changeLanguage, t, isRTL } = useLanguage();
@@ -50,9 +51,7 @@ function App() {
           <>
             <CategoriesGrid />
             {/* FAQ */}
-            <React.Suspense fallback={null}>
-              <FAQAccordion locale={currentLanguage} />
-            </React.Suspense>
+            <FAQAccordion locale="fr" />
           </>
         )}
       </main>
