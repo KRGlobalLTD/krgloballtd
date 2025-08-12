@@ -2,5 +2,47 @@
   "portfolio": {
     "karim": "Portfolio Karim",
     "raphael": "Portfolio Raphaël"
+  },
+  "offers": {
+    "title": "Offres & Prestations",
+    "subtitle": "Choisissez un pack selon votre objectif. Les tarifs sont “à partir de” et ajustés selon votre contexte.",
+    "whichPack": "Quel pack est fait pour vous ?",
+    "tag": { "basique": "Basique", "populaire": "Populaire", "premium": "Premium" },
+    "badge": {
+      "fast": "Rapide", "basic": "Basique", "onboarding": "Prise en main",
+      "site": "Site", "social": "Social", "ai": "IA",
+      "integrations": "Intégrations", "aiAdvanced": "IA avancée", "automations": "Automations"
+    },
+    "cta": {
+      "startNow": "Je commence aujourd’hui", "bookPack": "Réserver ce pack",
+      "quote": "Obtenir mon devis gratuit", "bookMeeting": "Réserver un RDV", "whatsapp": "WhatsApp"
+    },
+    "starter": {
+      "title": "Pack Découverte", "subtitle": "Lancez-vous dès aujourd’hui",
+      "price": "à partir de 49€", "perMonth": "",
+      "b1": "Visuel unique (logo simple / bannière / 3 posts)",
+      "b2": "Landing 1 section (Héros + CTA + formulaire)",
+      "b3": "Mini-workflow (Form → Email)",
+      "b4": "Montage vidéo ≤45s ou 10 retouches photo",
+      "b5": "Visio 30 min + notes d’actions"
+    },
+    "growth": {
+      "title": "Pack Croissance", "subtitle": "Passez à la vitesse supérieure",
+      "price": "à partir de 249€", "perMonth": "ou 3× 89€/mois",
+      "b1": "Mini-site 3 sections (SEO base + analytics)",
+      "b2": "15 posts + 1 micro‑vidéo (calendrier Notion)",
+      "b3": "Workflow utile (Form → Sheets + email + notif)",
+      "b4": "Vidéo ≤90s ou 20 retouches (cut + transitions)",
+      "b5": "Audit express + plan 30/60/90 (visio 45 min)"
+    },
+    "custom": {
+      "title": "Pack Sur‑mesure", "subtitle": "Votre projet clé en main",
+      "price": "à partir de 799€", "perMonth": "ou 3× 270€/mois",
+      "b1": "Site 5–7 sections / Petite boutique (Stripe + 2 automatisations)",
+      "b2": "Gestion réseaux 1 mois (30 posts, 4 reels, 1 ads)",
+      "b3": "Ops simple (x3 workflows) + dashboard Notion/Sheets",
+      "b4": "Agent IA avancé (RAG + multi‑langues)",
+      "b5": "Setup express (checklists + modèles + banques)"
+    }
   }
 }

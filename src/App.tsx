@@ -5,8 +5,8 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
-import PricingSection from '@/sections/Pricing';
-import CategoriesGrid from '@/components/Pricing/CategoriesGrid';
+import OffersSection from '@/components/OffersSection';
+import QuizPack from '@/components/pricing/QuizPack';
 import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
@@ -42,8 +42,8 @@ function App() {
 
       <main className="flex-1">
         <HeroSection t={t} />
-        {SHOW_PRICING && <PricingSection />}
-        {SHOW_PRICING && <CategoriesGrid />}
+        {SHOW_PRICING && <OffersSection />}
+        {SHOW_PRICING && <QuizPack />}
         {/* ===== Section FAQ ===== */}
         <Suspense fallback={null}>
           <FAQAccordion />

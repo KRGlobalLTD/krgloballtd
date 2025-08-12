@@ -1,91 +1,78 @@
 export type Pack = {
-  id: "starter" | "growth" | "custom";
-  title: string;
-  tagline: string;
-  priceLine: string;
-  features: string[]; // visibles en liste
-  extras: string[];   // masquées tant que "Voir tout le contenu" n’est pas ouvert
+  id: string;
+  tag?: "Basique" | "Populaire" | "Premium";
+  titleKey: string;
+  subtitleKey: string;
+  priceKey: string;
+  perMonthKey?: string;
+  badges: string[];
+  bullets: string[];
+  ctas: {
+    primary: { labelKey: string; href: string };
+    secondary?: { labelKey: string; href: string };
+    whatsapp?: { labelKey: string; href: string };
+  };
 };
 
 export const packs: Pack[] = [
   {
     id: "starter",
-    title: "Pack Découverte",
-    tagline: "Lancez-vous dès aujourd’hui",
-    priceLine: "à partir de 49€",
-    features: [
-      "Visuel unique (logo simple / bannière / 3 posts)",
-      "Landing 1 section (Héros + CTA + formulaire)",
-      "Mini‑workflow (Form → Email)",
-      "Montage vidéo ≤45s ou 10 retouches photo",
-      "Visio 30 min + notes d’actions",
-      "FAQ IA basique (widget 20 Q/R)"
+    tag: "Basique",
+    titleKey: "offers.starter.title",
+    subtitleKey: "offers.starter.subtitle",
+    priceKey: "offers.starter.price",
+    badges: ["offers.badge.fast", "offers.badge.basic", "offers.badge.onboarding"],
+    bullets: [
+      "offers.starter.b1",
+      "offers.starter.b2",
+      "offers.starter.b3",
+      "offers.starter.b4",
+      "offers.starter.b5"
     ],
-    extras: [
-      "SEO base : titles/meta, balises, Open Graph, favicon",
-      "Sitemap.xml + robots.txt",
-      "Accessibilité AA de base (contrastes, aria, keyboard)",
-      "Perf & qualité : images optimisées, lazy‑load, audit rapide",
-      "Analytics léger (pageview) + consentement cookies basique",
-      "Formulaire relié à Email (ou webhook) + capture Notion/Sheets",
-      "Hébergement & déploiement (Netlify/Vercel) + domaine/DNS",
-      "Page Mentions légales & Politique de confidentialité (modèles)",
-      "Petit kit de marque : variations logo + 1 template post",
-      "Onboarding 30 min + vidéo récap / mini‑doc utilisateur"
-    ]
+    ctas: {
+      primary: { labelKey: "offers.cta.startNow", href: "#contact" },
+      whatsapp: { labelKey: "offers.cta.whatsapp", href: "https://wa.me/33743561304" }
+    }
   },
   {
     id: "growth",
-    title: "Pack Croissance",
-    tagline: "Passez à la vitesse supérieure",
-    priceLine: "à partir de 249€ (ou 3× 89€/mois)",
-    features: [
-      "Mini‑site 3 sections (SEO base + analytics)",
-      "15 posts + 1 micro‑vidéo (calendrier Notion)",
-      "Workflow utile (Form → Sheets + email + notif)",
-      "Vidéo ≤90s ou 20 retouches (cut + transitions)",
-      "Audit express + plan 30/60/90 (visio 45 min)",
-      "Chatbot FAQ IA (50 Q/R + capture email)"
+    tag: "Populaire",
+    titleKey: "offers.growth.title",
+    subtitleKey: "offers.growth.subtitle",
+    priceKey: "offers.growth.price",
+    perMonthKey: "offers.growth.perMonth",
+    badges: ["offers.badge.site", "offers.badge.social", "offers.badge.ai"],
+    bullets: [
+      "offers.growth.b1",
+      "offers.growth.b2",
+      "offers.growth.b3",
+      "offers.growth.b4",
+      "offers.growth.b5"
     ],
-    extras: [
-      "Blog léger (MDX/Notion) + plan de contenu 1 mois",
-      "Automations no‑code : Zapier/Make (CRM Notion/Sheets)",
-      "CRM pipeline simple (acquisition → devis → suivi)",
-      "Emailing transactionnel (EmailJS/Resend) + modèles",
-      "SEO renforcé : plan sémantique, maillage, redirections",
-      "Performance : code‑split, images responsives, pré‑fetch",
-      "Formulaires multi‑étapes + validation + anti‑spam",
-      "Calendly/Meet intégré (prise de RDV) + page Merci",
-      "Tableau de bord Notion : KPIs trafic + pipeline + contenu",
-      "Kit social : 15 posts programmables + 1 gabarit vidéo",
-      "Onboarding 1h + 1 semaine de support email"
-    ]
+    ctas: {
+      primary: { labelKey: "offers.cta.bookPack", href: "#contact" },
+      whatsapp: { labelKey: "offers.cta.whatsapp", href: "https://wa.me/33743561304" }
+    }
   },
   {
     id: "custom",
-    title: "Pack Sur‑mesure",
-    tagline: "Votre projet clé en main",
-    priceLine: "à partir de 799€ (ou 3× 270€/mois)",
-    features: [
-      "Site 5–7 sections / Petite boutique (Stripe + 2 automatisations)",
-      "Gestion réseaux 1 mois (30 posts, 4 reels, 1 ads)",
-      "Ops simple (×3 workflows) + dashboard Notion/Sheets",
-      "Agent IA avancé (RAG + multi‑langues)",
-      "Accompagnement 1 mois (4 visios, roadmap Notion)",
-      "Setup express (checklists + modèles + banques)"
+    tag: "Premium",
+    titleKey: "offers.custom.title",
+    subtitleKey: "offers.custom.subtitle",
+    priceKey: "offers.custom.price",
+    perMonthKey: "offers.custom.perMonth",
+    badges: ["offers.badge.integrations", "offers.badge.aiAdvanced", "offers.badge.automations"],
+    bullets: [
+      "offers.custom.b1",
+      "offers.custom.b2",
+      "offers.custom.b3",
+      "offers.custom.b4",
+      "offers.custom.b5"
     ],
-    extras: [
-      "E‑commerce : Stripe (produits, checkout, coupons, webhooks)",
-      "Internationalisation FR/EN (i18n) + SEO multilingue",
-      "Recherche & Chat IA (RAG) : corpus Notion/Docs/URL",
-      "Intégrations : Supabase/DB, stockage, email, webhooks",
-      "Sécurité : en‑têtes, rate‑limit de base, honeypot, logs",
-      "Accessibilité avancée, tests, audits Lighthouse",
-      "Animations Framer Motion, sections premium (Hero 3D/Canvas)",
-      "Pages légales complètes (RGPD/UK) + bandeau cookies",
-      "Monitoring & alertes (uptime, erreurs) + sauvegardes",
-      "CI/CD & environnements (preview/staging) + secrets",
-      "Formation équipe (2h) + support 1 mois (SLA léger)"
-    ]
+    ctas: {
+      primary: { labelKey: "offers.cta.quote", href: "#contact" },
+      secondary: { labelKey: "offers.cta.bookMeeting", href: "#contact" },
+      whatsapp: { labelKey: "offers.cta.whatsapp", href: "https://wa.me/33743561304" }
+    }
   }
 ];

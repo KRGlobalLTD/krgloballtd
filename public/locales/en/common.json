@@ -2,5 +2,47 @@
   "portfolio": {
     "karim": "Karim's Portfolio",
     "raphael": "Raphaël's Portfolio"
+  },
+  "offers": {
+    "title": "Offers & Services",
+    "subtitle": "Pick a pack for your goal. Prices are “from” and adjusted to your context.",
+    "whichPack": "Which pack is right for you?",
+    "tag": { "basique": "Basic", "populaire": "Popular", "premium": "Premium" },
+    "badge": {
+      "fast": "Fast", "basic": "Basic", "onboarding": "Onboarding",
+      "site": "Website", "social": "Social", "ai": "AI",
+      "integrations": "Integrations", "aiAdvanced": "Advanced AI", "automations": "Automations"
+    },
+    "cta": {
+      "startNow": "Start today", "bookPack": "Book this pack",
+      "quote": "Get my free quote", "bookMeeting": "Book a meeting", "whatsapp": "WhatsApp"
+    },
+    "starter": {
+      "title": "Starter Pack", "subtitle": "Get launched today",
+      "price": "from €49", "perMonth": "",
+      "b1": "One visual (simple logo / banner / 3 posts)",
+      "b2": "One-section landing (Hero + CTA + form)",
+      "b3": "Mini-workflow (Form → Email)",
+      "b4": "Video edit ≤45s or 10 photo edits",
+      "b5": "30-min call + action notes"
+    },
+    "growth": {
+      "title": "Growth Pack", "subtitle": "Shift into higher gear",
+      "price": "from €249", "perMonth": "or 3× €89/mo",
+      "b1": "Mini-site 3 sections (basic SEO + analytics)",
+      "b2": "15 posts + 1 micro-video (Notion calendar)",
+      "b3": "Useful workflow (Form → Sheets + email + notif)",
+      "b4": "Video ≤90s or 20 edits (cuts + transitions)",
+      "b5": "Express audit + 30/60/90 plan (45-min call)"
+    },
+    "custom": {
+      "title": "Custom Pack", "subtitle": "Turn-key project",
+      "price": "from €799", "perMonth": "or 3× €270/mo",
+      "b1": "5–7-section site / Small shop (Stripe + 2 automations)",
+      "b2": "1-month social mgmt (30 posts, 4 reels, 1 ad)",
+      "b3": "Simple ops (x3 workflows) + Notion/Sheets dashboard",
+      "b4": "Advanced AI agent (RAG + multi-language)",
+      "b5": "Express setup (checklists + templates + banks)"
+    }
   }
 }
