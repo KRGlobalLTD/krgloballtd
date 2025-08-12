@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CALENDAR_URL, WHATSAPP_NUMBER, WHATSAPP_MSG_DEFAULT } from "@/lib/siteConfig";
+import { WHATSAPP_NUMBER, WHATSAPP_MSG_DEFAULT } from "@/lib/siteConfig";
+import BookCta from "@/components/BookCta";
 
 type Feature = { label: string };
 type Plan = {
@@ -276,14 +277,7 @@ export default function PricingSection() {
 
         {/* Double CTA global : Calendrier + WhatsApp */}
         <div className="mt-8 flex justify-center gap-3">
-          <a
-            href={CALENDAR_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex h-10 items-center justify-center rounded-xl border border-white/20 bg-white/5 px-4 text-sm font-medium text-gray-200 hover:bg-white hover:text-black"
-          >
-            Réserver un RDV
-          </a>
+          <BookCta />
           <a
             href={wa("Bonjour KR Global, je souhaite un devis express via WhatsApp.")}
             target="_blank"
