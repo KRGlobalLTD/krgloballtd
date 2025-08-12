@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const MOV_URL = "https://rseczxloemshthscxuoa.supabase.co/storage/v1/object/public/videologo/Cinematic_blackandwhite_space_202508092340_.mov";
-// Optional: add optimized versions later :
+// Optionnel : si tu ajoutes plus tard des versions optimisées :
 const WEBM_URL: string | null = null; // ex: "/videos/hero.webm"
 const MP4_URL:  string | null = null; // ex: "/videos/hero.mp4"
 const POSTER_URL: string | undefined = undefined; // ex: "/videos/hero-poster.jpg"
@@ -10,7 +10,7 @@ const POSTER_URL: string | undefined = undefined; // ex: "/videos/hero-poster.jp
 export default function HeroVideoURL() {
   const ref = useRef<HTMLVideoElement | null>(null);
   const [loaded, setLoaded] = useState(false);
-  const [visible, setVisible] = useState(true); // visible by default
+  const [visible, setVisible] = useState(true); // visible par défaut
 
   // IO: joue quand visible, pause sinon (simple et robuste)
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function HeroVideoURL() {
     el.muted = true; // SAFE-GUARD: requis pour autoplay iOS
     if (visible) {
       el.play().catch(() => {
-        // SAFE-GUARD: if autoplay is blocked, allow the user to click
+        // SAFE-GUARD: si l’autoplay est bloqué, on laisse l’utilisateur cliquer
       });
     } else {
       el.pause();
@@ -61,12 +61,12 @@ export default function HeroVideoURL() {
         poster={POSTER_URL}
         onLoadedData={() => setLoaded(true)}
       >
-        {/* Suggested order if you add optimized formats */}
+        {/* Ordre conseillé si un jour tu ajoutes les formats optimisés */}
         {WEBM_URL && <source src={WEBM_URL} type="video/webm" />}
         {MP4_URL  && <source src={MP4_URL}  type="video/mp4" />}
         {/* Fallback actuel : MOV public (type mp4 pour compat HLS/avc) */}
         <source src={MOV_URL} type='video/mp4; codecs="h264"' />
-        Your browser does not support HTML5 video.
+        Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
     </div>
   );

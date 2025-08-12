@@ -1,11 +1,18 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
-import './i18n/i18n';
+import LegalPage from './app/mentions-legales/page.tsx';
+import BookPage from './app/book/page.tsx';
 import './index.css';
 
-createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById('root')!;
+
+createRoot(rootElement).render(
   <StrictMode>
-    <App />
+    {window.location.pathname === '/mentions-legales'
+      ? <LegalPage />
+      : window.location.pathname === '/book'
+        ? <BookPage />
+        : <App />}
   </StrictMode>,
 );

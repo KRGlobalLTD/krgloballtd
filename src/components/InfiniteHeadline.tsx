@@ -1,20 +1,19 @@
 "use client";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
-import { useTranslation } from "react-i18next";
 
 export default function InfiniteHeadline({
-  speed = 35,
-  switchEvery = 5000,
+  speed = 35,         // px/s
+  switchEvery = 5000, // ms
 }: { speed?: number; switchEvery?: number }) {
-  const { i18n } = useTranslation();
-  const messages = useMemo(() => {
-    const fr = i18n.getFixedT("fr");
-    const en = i18n.getFixedT("en");
-    return [
-      { lang: "fr", dir: "ltr", text: `${fr("hero.title")} — ${fr("hero.subtitle")}` },
-      { lang: "en", dir: "ltr", text: `${en("hero.title")} — ${en("hero.subtitle")}` },
-    ];
-  }, [i18n]);
+  const messages = useMemo(
+    () => [
+      { lang: "fr", dir: "ltr", text: "KR Global Solutions — Connecter l'innovation au monde" },
+      { lang: "en", dir: "ltr", text: "KR Global Solutions — Connecting innovation to the world" },
+      { lang: "ar", dir: "rtl", text: "KR Global Solutions — نربط الابتكار بالعالم" },
+      { lang: "ja", dir: "ltr", text: "KR Global Solutions — 世界へイノベーションをつなぐ" },
+    ],
+    []
+  );
 
   const [idx, setIdx] = useState(0);
   useEffect(() => {
@@ -31,7 +30,9 @@ export default function InfiniteHeadline({
         lang={current.lang}
         dir={current.dir as "ltr" | "rtl"}
         className="relative whitespace-nowrap py-3"
-        style={{ "--marquee-duration": `${Math.max(10, Math.floor(1200 / speed))}s` } as CSSProperties}
+        style={{
+          "--marquee-duration": `${Math.max(10, Math.floor(1200 / speed))}s`,
+        } as CSSProperties}
       >
         <div className="marquee inline-flex">
           {Array.from({ length: 8 }).map((_, i) => (

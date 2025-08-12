@@ -11,7 +11,7 @@ export default function HeroVideoMinimal() {
     const el = ref.current;
     if (!el) return;
 
-    // iOS/Safari: ensure these properties are set before play()
+    // iOS/Safari: s'assurer que ces propriétés sont posées AVANT play()
     el.muted = true;
     el.playsInline = true;
     (el as HTMLVideoElement & { webkitPlaysInline?: boolean }).webkitPlaysInline = true;
@@ -22,7 +22,7 @@ export default function HeroVideoMinimal() {
     const tryPlay = () => {
       if (!el) return;
       el.play().catch(() => {
-        // Retry at short intervals if start is blocked
+        // Retry à intervalles courts si bloqué au démarrage
         attempts += 1;
         if (attempts < maxAttempts) {
           setTimeout(tryPlay, 350);
@@ -50,7 +50,7 @@ export default function HeroVideoMinimal() {
       <video
         ref={ref}
         className="w-full h-full object-cover"
-        // HTML attributes (in addition to JS properties set on mount)
+        // attributs HTML (en plus des propriétés JS posées au mount)
         autoPlay
         muted
         loop
@@ -61,7 +61,7 @@ export default function HeroVideoMinimal() {
       >
         {/* .mov → type quicktime pour Safari/Chrome */}
         <source src={MOV_URL} type="video/quicktime" />
-        Your browser does not support HTML5 video.
+        Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
     </div>
   );

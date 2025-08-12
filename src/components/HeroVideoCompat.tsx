@@ -11,7 +11,7 @@ export default function HeroVideoCompat() {
   const vref = useRef<HTMLVideoElement | null>(null);
   const [started, setStarted] = useState(false);
 
-  // Evaluate real browser support to order sources
+  // Évalue le support réel du navigateur pour ordonner les sources
   const sources = useMemo(() => {
     const order: { src: string; type: string }[] = [];
     if (typeof document !== "undefined") {
@@ -32,7 +32,7 @@ export default function HeroVideoCompat() {
     const el = vref.current;
     if (!el) return;
 
-    // iOS/Safari: must set before play()
+    // iOS/Safari : doit être posé AVANT play()
     el.muted = true;
     el.playsInline = true;
     // SAFE-GUARD: vendor-specific inline play for iOS Safari
@@ -48,7 +48,7 @@ export default function HeroVideoCompat() {
         });
     };
 
-    // Start immediately and restart when the tab becomes visible
+    // Lancer immédiatement + relancer quand l’onglet redevient visible
     kick();
     const onVis = () => { if (!document.hidden) kick(); };
     document.addEventListener("visibilitychange", onVis);
@@ -59,7 +59,7 @@ export default function HeroVideoCompat() {
 
   return (
     <div className="relative w-full overflow-hidden px-4 aspect-video rounded-xl bg-black max-h-[420px] md:max-h-[520px]">
-      {/* Black skeleton until playback starts */}
+      {/* Skeleton noir tant que la lecture n’a pas démarré */}
       {!started && <div aria-hidden className="absolute inset-0 bg-black z-0" />}
       <video
         ref={vref}
@@ -77,7 +77,7 @@ export default function HeroVideoCompat() {
         {sources.map((s, i) => (
           <source key={i} src={s.src} type={s.type} />
         ))}
-        Your browser does not support HTML5 video.
+        Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
     </div>
   );
