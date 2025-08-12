@@ -90,7 +90,7 @@ export const translations: Record<Language, Translation> = {
       },
     },
     about: {
-      title: 'À propos de KR Global LTD',
+      title: 'À propos de KR Global Solutions LTD',
       content: 'KR Global LTD est une entreprise innovante spécialisée dans les solutions digitales et l\'e-commerce. Nous connectons les technologies de pointe aux besoins du marché mondial, offrant des services sur mesure pour accompagner nos clients dans leur transformation numérique. Notre équipe passionnée développe des solutions performantes qui favorisent la croissance et l\'innovation. Nous nous engageons à créer un impact positif en rendant la technologie accessible et utile pour tous, partout dans le monde.',
     },
     contact: {
@@ -150,7 +150,7 @@ export const translations: Record<Language, Translation> = {
       },
     },
     about: {
-      title: 'About KR Global LTD',
+      title: 'About KR Global Solutions LTD',
       content: 'KR Global LTD is an innovative company specializing in digital solutions and e-commerce. We connect cutting-edge technologies to global market needs, offering tailored services to support our clients in their digital transformation. Our passionate team develops high-performance solutions that drive growth and innovation. We are committed to creating positive impact by making technology accessible and useful for everyone, everywhere in the world.',
     },
     contact: {
