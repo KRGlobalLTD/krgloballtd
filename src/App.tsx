@@ -42,9 +42,9 @@ function App() {
 
       <main>
         <HeroSection t={t} />
+        <RotatingLinks />
         <PricingSection />
         <QuizPack />
-        <RotatingLinks />
         <FAQSection />
         <AboutSection t={t} isRTL={isRTL} />
       </main>
