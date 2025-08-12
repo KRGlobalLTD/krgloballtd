@@ -1,0 +1,11 @@
+{
+  "dry": true,
+  "includeGlobs": [
+    "src/components/Header**",
+    "src/components/Footer**",
+    "src/pages/index**",
+    "src/App**"
+  ],
+  "excludeGlobs": ["**/*.test.*", "**/*.spec.*", "**/__mocks__/**"],
+  "maxChangedLinesPerFile": 200
+}

@@ -14,7 +14,7 @@ import { ENABLE_DZ_PARTICLES } from '@/featureFlags';
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
 
 function App() {
-  const { currentLanguage, changeLanguage, t, isRTL } = useLanguage();
+  const { t, isRTL } = useLanguage();
   const [showParticles, setShowParticles] = React.useState(false);
 
   React.useEffect(() => {
@@ -34,11 +34,7 @@ function App() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Header
-        currentLanguage={currentLanguage}
-        onLanguageChange={changeLanguage}
-        t={t}
-      />
+      <Header t={t} />
 
       <main>
         <HeroSection t={t} />
