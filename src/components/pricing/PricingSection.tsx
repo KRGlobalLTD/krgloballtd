@@ -230,7 +230,6 @@ function Card({
         </a>
       </div>
 
-      <p className="mt-3 text-[12px] text-gray-400">+50 projets réalisés • Satisfaction 98%</p>
     </motion.article>
   );
 }

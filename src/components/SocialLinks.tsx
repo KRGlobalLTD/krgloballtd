@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from "react";
-import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import { WHATSAPP_NUMBER, WHATSAPP_MSG_DEFAULT } from "@/lib/siteConfig";
 import { FaTiktok, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiFiverr } from "react-icons/si";
@@ -12,7 +11,19 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}?text=${encod
 )}`;
 
 export const socialLinks = [
-  { id: "whatsapp", label: "WhatsApp", href: waHref, icon: (size: number) => <WhatsappIcon style={{ width: size, height: size }} /> },
+  {
+    id: "whatsapp",
+    label: "WhatsApp",
+    href: waHref,
+    icon: (size: number) => (
+      <span
+        className="flex items-center justify-center rounded-full bg-green-500 text-white font-bold"
+        style={{ width: size, height: size }}
+      >
+        W
+      </span>
+    ),
+  },
   { id: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@krglobalsolutions?_t=ZS-8yl0PL5V6CQ&_r=1", icon: (size: number) => <FaTiktok size={size} /> },
   { id: "instagram", label: "Instagram", href: "https://www.instagram.com/krgloballtd?igsh=c29uN3VyNGFyb2xv&utm_source=qr", icon: (size: number) => <FaInstagram size={size} /> },
   { id: "fiverr", label: "Fiverr", href: "https://www.fiverr.com/krgloballtd/buying?source=avatar_menu_profile", icon: (size: number) => <SiFiverr size={size} /> },
