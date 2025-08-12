@@ -156,7 +156,7 @@ export function HeroSection({ t }: HeroSectionProps) {
           </div>
 
           <OrbitMenuDynamic
-            className="absolute inset-0 z-10"
+            className="absolute inset-0 z-20"
             items={[
               { label: t.hero.buttons.services, href: 'https://services.krglobal.com', external: true },
               { label: t.hero.buttons.invest, href: 'https://invest.krglobal.com', external: true },

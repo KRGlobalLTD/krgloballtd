@@ -29,7 +29,7 @@ export function LanguageSelector({ currentLanguage, onLanguageChange, t }: Langu
   return (
     <div className="relative">
       <button
-        className="flex items-center gap-2 px-4 py-2 min-h-11 text-sm font-medium text-black hover:text-neutral-600 transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-lg"
+        className="flex items-center gap-2 px-4 py-2 min-h-11 min-w-11 text-sm font-medium text-black hover:text-neutral-600 transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-lg"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={t.nav.language}
       >
