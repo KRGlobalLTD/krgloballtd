@@ -1,0 +1,4 @@
+- Supprimé : élément "Quel pack est fait pour vous ?"
+- Ajout : détails étendus dans “Voir tout le contenu” pour chaque pack (Découverte, Croissance, Sur‑mesure)
+- Corrigé : bouton “Voir le contenu” → dépliage/repliage accessible
+- Aucune autre section modifiée
