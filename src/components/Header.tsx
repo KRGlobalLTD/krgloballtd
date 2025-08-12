@@ -1,19 +1,17 @@
 import React from 'react';
-import { LanguageSelector } from './LanguageSelector';
+import LanguageSelector from './LanguageSelector';
 import SocialLinks from "@/components/SocialLinks";
-import { Language, Translation } from '../data/translations';
+import { Translation } from '../data/translations';
 import KRLogoKR from "@/components/KRLogoKR";
 import { DarkZoneToggle } from './DarkZoneToggle';
 import { Menu, X } from "lucide-react";
 const CalendlyPopupButton = React.lazy(() => import("@/components/CalendlyPopup").then(m => ({ default: m.CalendlyPopupButton })));
 
 interface HeaderProps {
-  currentLanguage: Language;
-  onLanguageChange: (lang: Language) => void;
   t: Translation;
 }
 
-export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
+export function Header({ t }: HeaderProps) {
   const [open, setOpen] = React.useState(false);
   return (
     <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-neutral-200 dz-card dz-border dz-fg">
@@ -24,11 +22,7 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
             hrefK="https://www.karimhammouche.com/"
             hrefR="https://rthportofolio.com/"
           />
-          <LanguageSelector
-            currentLanguage={currentLanguage}
-            onLanguageChange={onLanguageChange}
-            t={t}
-          />
+          <LanguageSelector />
           {/* SAFE-GUARD: isolated toggle to avoid interfering with existing nav */}
           <DarkZoneToggle label={t.nav.darkZone} />
         </div>
