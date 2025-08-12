@@ -1,3 +1,4 @@
+// FAQ content in French and English
 export type QA = { q: string; a: string };
 
 export const faqFR: QA[] = [
