@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from './hooks/useLanguage';
 import { Header } from './components/Header';
@@ -9,11 +9,10 @@ import PricingSection from './components/PricingSection';
 import CategoriesGrid from '@/components/Pricing/CategoriesGrid';
 import PricingCards from '@/components/pricing/PricingCards';
 import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
-import dynamic from "next/dynamic";
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
 // FAQ
-const FAQAccordion = dynamic(() => import('@/components/faq/FAQAccordion'), { ssr: false });
+const FAQAccordion = React.lazy(() => import('@/components/faq/FAQAccordion'));
 
 function App() {
   const { currentLanguage, changeLanguage, t, isRTL } = useLanguage();
@@ -51,16 +50,18 @@ function App() {
           <>
             <CategoriesGrid />
             {/* FAQ */}
-            <FAQAccordion locale="fr" />
+            <Suspense fallback={null}>
+              <FAQAccordion locale="fr" />
+            </Suspense>
           </>
         )}
       </main>
 
       <Footer />
       {ENABLE_DZ_PARTICLES && showParticles && (
-        <React.Suspense fallback={null}>
+        <Suspense fallback={null}>
           <DarkZoneParticles />
-        </React.Suspense>
+        </Suspense>
       )}
     </motion.div>
   );
