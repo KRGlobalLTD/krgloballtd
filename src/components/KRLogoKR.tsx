@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { createPortal } from "react-dom";
 import { useEffect, useRef, useState } from "react";
 
-type Intensity = "strong" | "max"; // "max" = plus visible (par défaut)
+type Intensity = "strong" | "max"; // "max" = more visible by default
 
 function usePortalTooltip(label: string) {
   const anchorRef = useRef<HTMLAnchorElement | null>(null);
@@ -53,14 +53,14 @@ export default function KRLogoKR({
   hrefK,
   hrefR,
   className = "",
-  intensity = "max" as Intensity, // Mouvement BIEN visible par défaut
+  intensity = "max" as Intensity, // very visible movement by default
 }: {
   hrefK?: string;
   hrefR?: string;
   className?: string;
   intensity?: Intensity;
 }) {
-  // tooltips exclusives : une seule à la fois
+  // exclusive tooltips: only one at a time
   const k = usePortalTooltip("Portfolio de Karim");
   const r = usePortalTooltip("Portfolio de Raphaël");
   const [exclusive, setExclusive] = useState<"K" | "R" | null>(null);
@@ -100,7 +100,7 @@ export default function KRLogoKR({
 
       <span aria-hidden>/</span>
 
-      {/* R (phase décalée) */}
+      {/* R (offset phase) */}
       <motion.a
         ref={r.anchorRef}
         href={hrefR}
@@ -111,7 +111,7 @@ export default function KRLogoKR({
         animate="animate"
         whileHover="whileHover"
         whileTap="whileTap"
-        transition={{ delay: 0.6 }}  // décalage pour capter l’œil
+        transition={{ delay: 0.6 }}  // delay to catch the eye
         onMouseEnter={() => { setExclusive("R"); r.setOpen(true); r.update(); }}
         onFocus={() => { setExclusive("R"); r.setOpen(true); r.update(); }}
         onMouseLeave={() => { if (exclusive === "R") { r.setOpen(false); setExclusive(null); } }}
@@ -120,11 +120,11 @@ export default function KRLogoKR({
         R
       </motion.a>
 
-      {/* Tooltips exclusives via Portal (jamais coupées par le header) */}
+      {/* Exclusive tooltips via Portal (never clipped by the header) */}
       {exclusive === "K" && <k.Tooltip />}
       {exclusive === "R" && <r.Tooltip />}
 
-      {/* Respect des utilisateurs sensibles au mouvement */}
+      {/* Respect users sensitive to motion */}
       <style jsx global>{`
         @media (prefers-reduced-motion: reduce) {
           *[data-framer-motion] { animation: none !important; transition: none !important; transform: none !important; }

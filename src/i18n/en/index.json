@@ -1,0 +1,15 @@
+{
+  "hero": { "title": "KR Global Solutions", "subtitle": "Digital solutions, e‑commerce and technologies for tomorrow." },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "darkZone": "Dark Zone",
+    "menu": { "open": "Open menu", "close": "Close menu" }
+  },
+  "buttons": {
+    "contact": "Contact us",
+    "learnMore": "Learn more",
+    "bookCall": "Book a call"
+  }
+}

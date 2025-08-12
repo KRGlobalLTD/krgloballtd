@@ -43,7 +43,7 @@ export default function SocialLinks({
   const spacing = variant === "header" ? "gap-3 sm:gap-4" : "gap-4 sm:gap-5";
   const item = "inline-flex items-center justify-center min-w-[44px] min-h-[44px]";
   return (
-    <nav aria-label="Réseaux sociaux" className={`flex flex-wrap ${spacing} ${className || ""}`}>
+    <nav aria-label="Social networks" className={`flex flex-wrap ${spacing} ${className || ""}`}>
       {socialLinks.map((link) => (
         <a
           key={link.id}

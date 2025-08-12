@@ -1,15 +1,10 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 export default function BookCta() {
-  const pathname = usePathname();
-  const prefix = pathname?.startsWith("/en") ? "/en" : "";
-  const isEN = prefix === "/en";
-  
+  const { t } = useTranslation();
   return (
-    <Link href={`${prefix}/book`} className="btn btn-primary">
-      {isEN ? "Book a call" : "Réserver un RDV"}
-    </Link>
+    <a href="/book" className="btn btn-primary">
+      {t('buttons.bookCall')}
+    </a>
   );
 }

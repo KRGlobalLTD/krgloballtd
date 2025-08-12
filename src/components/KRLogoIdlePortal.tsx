@@ -78,7 +78,7 @@ export default function KRLogoIdlePortal({
 
   return (
     <div className={`relative flex items-center gap-2 ${className}`}>
-      {/* halo discret autour du bloc pour signaler l'interactivité */}
+      {/* subtle halo around the block to indicate interactivity */}
       <motion.div className="absolute -inset-3 rounded-full"
         style={{ boxShadow: "0 0 30px rgba(255,255,255,0.12)" }}
         variants={halo} animate="animate" aria-hidden />
@@ -110,7 +110,7 @@ export default function KRLogoIdlePortal({
         </motion.button>
       </div>
 
-      {/* Tooltips portalisées (pas coupées par le header) */}
+      {/* Portal tooltips (not clipped by the header) */}
       {showTooltips && <TooltipPortal text="Portfolio Karim" pos={k.pos} />}
       {showTooltips && <TooltipPortal text="Portfolio Raphaël" pos={r.pos} />}
 

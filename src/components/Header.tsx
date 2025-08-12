@@ -1,17 +1,14 @@
 import React from 'react';
-import LanguageSelector from './LanguageSelector';
+import LanguageSwitcher from './LanguageSwitcher';
 import SocialLinks from "@/components/SocialLinks";
-import { Translation } from '../data/translations';
 import KRLogoKR from "@/components/KRLogoKR";
 import { DarkZoneToggle } from './DarkZoneToggle';
 import { Menu, X } from "lucide-react";
 import BookCta from "@/components/BookCta";
+import { useTranslation } from 'react-i18next';
 
-interface HeaderProps {
-  t: Translation;
-}
-
-export function Header({ t }: HeaderProps) {
+export function Header() {
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   return (
     <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-neutral-200 dz-card dz-border dz-fg">
@@ -22,9 +19,9 @@ export function Header({ t }: HeaderProps) {
             hrefK="https://www.karimhammouche.com/"
             hrefR="https://rthportofolio.com/"
           />
-          <LanguageSelector />
+          <LanguageSwitcher />
           {/* SAFE-GUARD: isolated toggle to avoid interfering with existing nav */}
-          <DarkZoneToggle label={t.nav.darkZone} />
+          <DarkZoneToggle label={t('nav.darkZone')} />
         </div>
         <div className="flex items-center justify-end flex-1 overflow-hidden gap-2">
           <BookCta />
@@ -32,7 +29,7 @@ export function Header({ t }: HeaderProps) {
           <button
             className="md:hidden inline-flex items-center justify-center min-h-11 px-4 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50"
             onClick={() => setOpen((o) => !o)}
-            aria-label={open ? 'Fermer le menu' : 'Menu'}
+            aria-label={open ? t('nav.menu.close') : t('nav.menu.open')}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
