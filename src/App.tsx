@@ -29,18 +29,18 @@ function App() {
 
   return (
     <motion.div
-      className="min-h-screen bg-white dz-bg dz-fg"
+      className="flex min-h-screen flex-col bg-white dz-bg dz-fg"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Header 
+      <Header
         currentLanguage={currentLanguage}
         onLanguageChange={changeLanguage}
         t={t}
       />
-      
-      <main>
+
+      <main className="flex-1">
         <HeroSection t={t} />
         {SHOW_PRICING && <PricingSection />}
         {SHOW_PRICING && <CategoriesGrid />}
@@ -48,9 +48,9 @@ function App() {
         <Suspense fallback={null}>
           <FAQAccordion />
         </Suspense>
-        <Footer />
         <AboutSection t={t} isRTL={isRTL} />
       </main>
+      <Footer />
       {ENABLE_DZ_PARTICLES && showParticles && (
         <Suspense fallback={null}>
           <DarkZoneParticles />
