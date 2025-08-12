@@ -11,7 +11,7 @@ import PricingCards from '@/components/pricing/PricingCards';
 import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
-// FAQ
+// FAQ (lazy universel)
 const FAQAccordion = React.lazy(() => import('@/components/faq/FAQAccordion'));
 
 function App() {
@@ -46,15 +46,11 @@ function App() {
         {SHOW_PRICING && <PricingSection />}
         <PricingCards locale={currentLanguage} />
         <AboutSection t={t} isRTL={isRTL} />
-        {SHOW_PRICING && (
-          <>
-            <CategoriesGrid />
-            {/* FAQ */}
-            <Suspense fallback={null}>
-              <FAQAccordion locale="fr" />
-            </Suspense>
-          </>
-        )}
+        {SHOW_PRICING && <CategoriesGrid />}
+        {/* ===== Section FAQ ===== */}
+        <Suspense fallback={null}>
+          <FAQAccordion locale="fr" />
+        </Suspense>
       </main>
 
       <Footer />

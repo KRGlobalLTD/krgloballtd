@@ -38,4 +38,3 @@ export default function FAQAccordion({ locale = "fr", className }: Props) {
     </section>
   );
 }
-
