@@ -6,9 +6,7 @@ import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import CategoriesGrid from '@/components/Pricing/CategoriesGrid';
-import FAQAccordion from '@/components/FAQ/FAQAccordion';
-import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
+import { ENABLE_DZ_PARTICLES } from './featureFlags';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
 
@@ -42,12 +40,6 @@ function App() {
       <main>
         <HeroSection t={t} />
         <AboutSection t={t} isRTL={isRTL} />
-        {SHOW_PRICING && (
-          <>
-            <CategoriesGrid />
-            <FAQAccordion />
-          </>
-        )}
       </main>
 
       <Footer />

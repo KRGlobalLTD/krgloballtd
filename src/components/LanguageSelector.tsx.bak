@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Globe, ChevronDown } from 'lucide-react';
 import { Language, Translation } from '../data/translations';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,17 +19,10 @@ export function LanguageSelector({ currentLanguage, onLanguageChange, t }: Langu
 
   const currentLang = languages.find(lang => lang.code === currentLanguage);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const onScroll = () => setIsOpen(false);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [isOpen]);
-
   return (
     <div className="relative">
       <button
-        className="flex items-center gap-2 px-4 py-2 min-h-11 text-sm font-medium text-black hover:text-neutral-600 transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-lg"
+        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-black hover:text-neutral-600 transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-lg"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={t.nav.language}
       >
@@ -62,7 +55,7 @@ export function LanguageSelector({ currentLanguage, onLanguageChange, t }: Langu
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
-                    className={`w-full text-left px-4 py-2 min-h-11 text-sm hover:bg-neutral-50 transition-colors flex items-center gap-3 ${
+                    className={`w-full text-left px-4 py-2 text-sm hover:bg-neutral-50 transition-colors flex items-center gap-3 ${
                       currentLanguage === lang.code ? 'bg-neutral-100 font-medium' : ''
                     }`}
                     onClick={() => {
