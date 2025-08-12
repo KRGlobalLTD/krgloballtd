@@ -46,7 +46,7 @@ function App() {
         {SHOW_PRICING && <CategoriesGrid />}
         {/* ===== Section FAQ ===== */}
         <Suspense fallback={null}>
-          <FAQAccordion locale="fr" />
+          <FAQAccordion />
         </Suspense>
         <Footer />
         <AboutSection t={t} isRTL={isRTL} />
