@@ -1,7 +1,7 @@
-/* neutraliser d’éventuelles règles qui cassent le fixed */
-.kr-wa-fab {
-  contain: layout style size;
+html {
+  scroll-behavior: smooth;
 }
+
 @media (min-width: 1024px) {
   html, body {
     transform: none !important;

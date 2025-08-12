@@ -1,21 +1,7 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { useMemo, useState } from "react";
-
-/** ========== CONFIG ÉDITABLE ===========
- * Active/désactive le bandeau d’urgence
- */
-const PROMO_ENABLED = true;
-const PROMO_TEXT = "Offre limitée : livraison express offerte jusqu’au 30/09";
-
-/** Preuve sociale & contact rapide */
-const PROJECTS_COUNT = 50; // Ex: +50 projets réalisés
-const WHATSAPP_NUMBER = "+212600000000"; // Remplace par ton numéro (format international)
-const WHATSAPP_MSG = encodeURIComponent(
-  "Bonjour KR Global, je souhaite un devis rapide pour votre pack."
-);
-
-/** ===================================== */
+import { CALENDAR_URL, WHATSAPP_NUMBER, WHATSAPP_MSG_DEFAULT } from "@/lib/siteConfig";
 
 type Feature = { label: string };
 type Plan = {
@@ -23,13 +9,13 @@ type Plan = {
   name: string;
   subtitle: string;
   priceFrom?: string;
-  prevPrice?: string; // ancien prix barré (pour ancrage) — optionnel
-  monthlySplit?: string; // ex: "ou 3× 89€/mois"
+  prevPrice?: string;
+  monthlySplit?: string;
   ctaLabel: string;
   ctaHref: string;
   popular?: boolean;
   premium?: boolean;
-  tags?: string[]; // icônes/bénéfices rapides: ["🛍️ Site", "📱 Social", "🤖 IA"]
+  tags?: string[];
   features: Feature[];
   extraGroups?: { title: string; items: string[] }[];
 };
@@ -63,7 +49,7 @@ const plans: Plan[] = [
     name: "Pack Croissance",
     subtitle: "Passez à la vitesse supérieure",
     priceFrom: "249€",
-    prevPrice: "399€", // affiché barré pour l’ancrage
+    prevPrice: "399€",
     monthlySplit: "ou 3× 89€/mois",
     ctaLabel: "Réserver ce pack",
     ctaHref: "#commande-growth",
@@ -80,12 +66,7 @@ const plans: Plan[] = [
     extraGroups: [
       {
         title: "Add‑ons recommandés",
-        items: [
-          "Livraison express 48h",
-          "Copywriting premium",
-          "A/B test visuels",
-          "Pack contenu 1 mois",
-        ],
+        items: ["Livraison express 48h", "Copywriting premium", "A/B test visuels", "Pack contenu 1 mois"],
       },
     ],
   },
@@ -121,45 +102,36 @@ const plans: Plan[] = [
   },
 ];
 
-function Badge({
-  children,
-  tone = "default",
-}: {
-  children: React.ReactNode;
-  tone?: "default" | "premium";
-}) {
+const PROMO_ENABLED = true;
+const PROMO_TEXT = "Offre limitée : livraison express offerte jusqu’au 30/09";
+
+const wa = (msg?: string) => {
+  const n = WHATSAPP_NUMBER.replace(/\D/g, "");
+  const m = encodeURIComponent(msg || WHATSAPP_MSG_DEFAULT);
+  return `https://wa.me/${n}?text=${m}`;
+};
+
+function Badge({ children, tone = "default" }: { children: React.ReactNode; tone?: "default" | "premium" }) {
   const cls =
     tone === "premium"
       ? "from-white to-gray-300 text-black border-white/20"
       : "from-gray-200 to-white text-black border-white/10";
   return (
-    <span
-      className={`absolute -top-3 left-4 rounded-full border bg-gradient-to-r ${cls} px-3 py-1 text-[11px] font-semibold tracking-wide shadow-md`}
-    >
+    <span className={`absolute -top-3 left-4 rounded-full border bg-gradient-to-r ${cls} px-3 py-1 text-[11px] font-semibold tracking-wide shadow-md`}>
       {children}
     </span>
   );
 }
 
-function WhatsAppButton() {
-  const href = useMemo(
-    () => `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}?text=${WHATSAPP_MSG}`,
-    []
-  );
-  return (
-    <a
-      href={href}
-      className="ml-2 inline-flex h-10 items-center justify-center rounded-xl border border-[#25D366]/40 px-3 text-sm font-semibold text-[#25D366] hover:bg-[#25D366] hover:text-black"
-      aria-label="WhatsApp devis rapide"
-    >
-      WhatsApp
-    </a>
-  );
-}
-
-function Card({ plan }: { plan: Plan }) {
-  const [open, setOpen] = useState(false);
-
+function Card({
+  plan,
+  open,
+  onToggle,
+}: {
+  plan: Plan;
+  open: boolean;
+  onToggle: () => void;
+}) {
   return (
     <motion.article
       className="relative flex flex-col justify-between rounded-2xl border border-[#2A2A2A] bg-[#121212] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(0,0,0,0.35)] hover:outline hover:outline-1 hover:outline-white/10"
@@ -183,13 +155,10 @@ function Card({ plan }: { plan: Plan }) {
         {plan.monthlySplit && <div className="mt-1 text-sm text-gray-300">{plan.monthlySplit}</div>}
       </div>
 
-      {/* Tags rapides (icônes/bénéfices) */}
       {plan.tags?.length ? (
         <ul className="mb-3 flex flex-wrap gap-2 text-xs text-gray-200">
           {plan.tags.map((t, i) => (
-            <li key={i} className="rounded-full border border-white/10 bg-white/5 px-2 py-1">
-              {t}
-            </li>
+            <li key={i} className="rounded-full border border-white/10 bg-white/5 px-2 py-1">{t}</li>
           ))}
         </ul>
       ) : null}
@@ -206,12 +175,13 @@ function Card({ plan }: { plan: Plan }) {
       {plan.extraGroups?.length ? (
         <div className="mb-4">
           <button
-            onClick={() => setOpen((v) => !v)}
+            onClick={onToggle}
             className="text-xs text-gray-300 underline underline-offset-4 hover:text-white"
             aria-expanded={open}
           >
             {open ? "Masquer le détail" : "Voir tout le contenu"}
           </button>
+
           <motion.div
             initial={false}
             animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
@@ -236,36 +206,42 @@ function Card({ plan }: { plan: Plan }) {
             )}
           </motion.div>
         </div>
-      ) : null}
+      ) : (
+        <div className="mb-4" />
+      )}
 
       <div className="mt-auto flex items-center">
         <a
           href={plan.ctaHref}
-          className="inline-flex h-10 items-center justify-center rounded-xl border border-white/30 px-4 text-sm font-semibold text-white transition-all hover:bg-white hover:text-black focus:outline-none"
+          className="inline-flex h-10 items-center justify-center rounded-xl border border-white/30 px-4 text-sm font-semibold text-white transition-all hover:bg-white hover:text-black"
           aria-label={plan.ctaLabel}
         >
           {plan.ctaLabel}
         </a>
-        {/* Contact rapide WHATSAPP */}
-        <WhatsAppButton />
+        <a
+          href={wa(`Bonjour KR Global, je veux avancer sur ${plan.name}.`)}
+          target="_blank"
+          rel="noreferrer"
+          className="ml-2 inline-flex h-10 items-center justify-center rounded-xl border border-[#25D366]/40 px-3 text-sm font-semibold text-[#25D366] hover:bg-[#25D366] hover:text-black"
+          aria-label="WhatsApp devis rapide"
+        >
+          WhatsApp
+        </a>
       </div>
 
-      {/* Preuve sociale */}
-      <p className="mt-3 text-[12px] text-gray-400">
-        +{PROJECTS_COUNT} projets réalisés • Satisfaction 98%
-      </p>
+      <p className="mt-3 text-[12px] text-gray-400">+50 projets réalisés • Satisfaction 98%</p>
     </motion.article>
   );
 }
 
 export default function PricingSection() {
+  const [openId, setOpenId] = useState<string | null>(null);
+  const toggle = (id: string) => setOpenId((cur) => (cur === id ? null : id));
+
   return (
-    <section
-      aria-labelledby="pricing-title"
-      className="w-full bg-[#0B0B0C] py-12"
-    >
+    <section aria-labelledby="pricing-title" className="w-full bg-[#0B0B0C] py-12">
       <div className="mx-auto max-w-6xl px-4">
-        {/* Bandeau d’urgence doux */}
+
         {PROMO_ENABLED && (
           <div className="mb-6 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm text-gray-200">
             {PROMO_TEXT}
@@ -273,15 +249,11 @@ export default function PricingSection() {
         )}
 
         <header className="mb-8 text-center">
-          <h2
-            id="pricing-title"
-            className="text-3xl font-extrabold tracking-tight text-white"
-          >
+          <h2 id="pricing-title" className="text-3xl font-extrabold tracking-tight text-white">
             Offres &amp; Prestations
           </h2>
           <p className="mx-auto mt-2 max-w-2xl text-sm text-gray-300">
-            Choisissez un pack selon votre objectif. Les tarifs sont “à
-            partir de” et ajustés selon votre contexte.
+            Choisissez un pack selon votre objectif. Les tarifs sont “à partir de” et ajustés selon votre contexte.
           </p>
           <a
             href="#quiz-pack"
@@ -293,20 +265,30 @@ export default function PricingSection() {
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {plans.map((p) => (
-            <Card key={p.id} plan={p} />
+            <Card key={p.id} plan={p} open={openId === p.id} onToggle={() => toggle(p.id)} />
           ))}
         </div>
 
-        <div className="mt-8 text-center">
+        {/* Double CTA global : Calendrier + WhatsApp */}
+        <div className="mt-8 flex justify-center gap-3">
           <a
-            href="#contact"
+            href={CALENDAR_URL}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex h-10 items-center justify-center rounded-xl border border-white/20 bg-white/5 px-4 text-sm font-medium text-gray-200 hover:bg-white hover:text-black"
           >
-            Vous hésitez ? Devis express en 24h
+            Réserver un RDV
+          </a>
+          <a
+            href={wa("Bonjour KR Global, je souhaite un devis express via WhatsApp.")}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-10 items-center justify-center rounded-xl border border-[#25D366]/40 px-4 text-sm font-semibold text-[#25D366] hover:bg-[#25D366] hover:text-black"
+          >
+            Écrire sur WhatsApp
           </a>
         </div>
       </div>
     </section>
   );
 }
-
