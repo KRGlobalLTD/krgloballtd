@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import { useLanguage } from './hooks/useLanguage';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
+import PricingSection from '@/components/pricing/PricingSection';
+import QuizPack from '@/components/pricing/QuizPack';
+import RotatingLinks from '@/components/RotatingLinks';
+import FAQSection from '@/components/FAQSection';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
-import PricingSection from '@/components/pricing/PricingSection';
-import FAQAccordion from '@/components/FAQ/FAQAccordion';
-import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from '@/featureFlags';
+import { ENABLE_DZ_PARTICLES } from '@/featureFlags';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
 
@@ -41,18 +42,14 @@ function App() {
 
       <main>
         <HeroSection t={t} />
+        <PricingSection />
+        <QuizPack />
+        <RotatingLinks />
+        <FAQSection />
         <AboutSection t={t} isRTL={isRTL} />
-        {SHOW_PRICING && (
-          <>
-            <PricingSection />
-            <FAQAccordion />
-          </>
-        )}
-        {SHOW_PRICING ? <div data-test="pricing-on" /> : <div data-test="pricing-off" />}
       </main>
 
       <Footer />
-      <WhatsAppButton />
       {ENABLE_DZ_PARTICLES && showParticles && (
         <React.Suspense fallback={null}>
           <DarkZoneParticles />
