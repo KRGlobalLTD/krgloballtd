@@ -7,7 +7,11 @@ export function Footer() {
   const prefix = pathname.startsWith('/en') ? '/en' : '';
 
   const links = [
-    { label: "Contacts", href: "/contact" },
+    {
+      label: "contact@krglobalsolutionsltd.com",
+      href: "mailto:contact@krglobalsolutionsltd.com",
+      className: "break-all",
+    },
     { label: "Mentions légales", href: `${prefix}/mentions-legales` },
   ];
 
@@ -18,19 +22,12 @@ export function Footer() {
           <ul>
             {links.map((link, i) => (
               <li key={i}>
-                <a href={link.href}>{link.label}</a>
+                <a href={link.href} className={link.className}>
+                  {link.label}
+                </a>
               </li>
             ))}
           </ul>
-          <p className="break-words truncate">
-            <a
-              href="mailto:contact@krglobalsolutionsltd.com"
-              className="block truncate break-all underline underline-offset-4 hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/20 rounded"
-              aria-label="Envoyer un e-mail à contact@krglobalsolutionsltd.com"
-            >
-              contact@krglobalsolutionsltd.com
-            </a>
-          </p>
         </div>
         <div className="flex flex-col sm:items-end gap-2 w-full min-w-0">
           <SocialLinks variant="footer" size={22} className="justify-center sm:justify-end" />
