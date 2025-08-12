@@ -7,7 +7,7 @@ import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
 import PricingSection from './components/PricingSection';
 import CategoriesGrid from '@/components/Pricing/CategoriesGrid';
-import FAQAccordion from '@/components/FAQ/FAQAccordion';
+import FAQSection from '@/components/FAQSection';
 import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
@@ -46,7 +46,7 @@ function App() {
         {SHOW_PRICING && (
           <>
             <CategoriesGrid />
-            <FAQAccordion />
+            <FAQSection />
           </>
         )}
       </main>
