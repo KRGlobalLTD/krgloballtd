@@ -8,9 +8,8 @@ export function Footer() {
   const isEN = prefix === '/en';
 
   const links = [
-    { label: isEN ? "Book a call" : "Prendre rendez-vous", href: `${prefix}/book` },
+    ...(isEN ? [{ label: "Book a call", href: `${prefix}/book` }] : []),
     { label: "Contacts", href: "/contact" },
-    { label: "Global Solutions", href: "/" },
     { label: "Mentions légales", href: `${prefix}/mentions-legales` },
   ];
 
