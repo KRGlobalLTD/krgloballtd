@@ -8,7 +8,7 @@ import { Footer } from './components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import CategoriesGrid from '@/components/Pricing/CategoriesGrid';
 import FAQAccordion from '@/components/FAQ/FAQAccordion';
-import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
+import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from '@/featureFlags';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
 
@@ -33,12 +33,12 @@ function App() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Header 
+      <Header
         currentLanguage={currentLanguage}
         onLanguageChange={changeLanguage}
         t={t}
       />
-      
+
       <main>
         <HeroSection t={t} />
         <AboutSection t={t} isRTL={isRTL} />
@@ -48,6 +48,7 @@ function App() {
             <FAQAccordion />
           </>
         )}
+        {SHOW_PRICING ? <div data-test="pricing-on" /> : <div data-test="pricing-off" />}
       </main>
 
       <Footer />

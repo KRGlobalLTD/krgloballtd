@@ -103,19 +103,8 @@ export function HeroSection({ t }: HeroSectionProps) {
               );
             })}
           </div> */}
-          <OrbitMenuDynamic
-            className="absolute inset-0"
-            items={[
-              { label: t.hero.buttons.services, href: 'https://services.krglobal.com', external: true },
-              { label: t.hero.buttons.invest, href: 'https://invest.krglobal.com', external: true },
-              { label: t.hero.buttons.blog, href: 'https://blog.krglobal.com', external: true },
-              { label: t.hero.buttons.boutique, href: 'https://laboutique.krglobal.com', external: true },
-              { label: t.hero.buttons.equipe, href: 'https://equipe.krglobal.com', external: true },
-            ]}
-          />
-
           {/* Central Planet */}
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
@@ -165,6 +154,17 @@ export function HeroSection({ t }: HeroSectionProps) {
               </div>
             </motion.div>
           </div>
+
+          <OrbitMenuDynamic
+            className="absolute inset-0 z-10"
+            items={[
+              { label: t.hero.buttons.services, href: 'https://services.krglobal.com', external: true },
+              { label: t.hero.buttons.invest, href: 'https://invest.krglobal.com', external: true },
+              { label: t.hero.buttons.blog, href: 'https://blog.krglobal.com', external: true },
+              { label: t.hero.buttons.boutique, href: 'https://laboutique.krglobal.com', external: true },
+              { label: t.hero.buttons.equipe, href: 'https://equipe.krglobal.com', external: true },
+            ]}
+          />
         </motion.div>
 
       </div>
