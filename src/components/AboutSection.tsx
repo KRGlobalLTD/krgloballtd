@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Translation } from '../data/translations';
+const AboutOrbLinks = React.lazy(() => import('@/components/AboutOrbLinks'));
 
 interface AboutSectionProps {
   t: Translation;
@@ -9,7 +10,7 @@ interface AboutSectionProps {
 
 export function AboutSection({ t, isRTL }: AboutSectionProps) {
   return (
-    <section id="about" className="py-10 md:py-20 bg-white dz-bg dz-fg">
+    <section id="about" className="py-10 md:py-20 mb-32 bg-white dz-bg dz-fg scroll-mt-24">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
           <motion.div
@@ -34,6 +35,9 @@ export function AboutSection({ t, isRTL }: AboutSectionProps) {
             </p>
           </motion.div>
         </div>
+        <Suspense fallback={null}>
+          <AboutOrbLinks t={t} />
+        </Suspense>
       </div>
     </section>
   );

@@ -27,9 +27,18 @@ export interface Translation {
       invest: string;
     };
   };
-  about: {
-    title: string;
-    content: string;
+    about: {
+      title: string;
+      content: string;
+    };
+  common: {
+    links: {
+      blog: string;
+      shop: string;
+      team: string;
+      services: string;
+      investors: string;
+    };
   };
   contact: {
     title: string;
@@ -93,6 +102,15 @@ export const translations: Record<Language, Translation> = {
       title: 'À propos de KR Global Solutions LTD',
       content: 'KR Global LTD est une entreprise innovante spécialisée dans les solutions digitales et l\'e-commerce. Nous connectons les technologies de pointe aux besoins du marché mondial, offrant des services sur mesure pour accompagner nos clients dans leur transformation numérique. Notre équipe passionnée développe des solutions performantes qui favorisent la croissance et l\'innovation. Nous nous engageons à créer un impact positif en rendant la technologie accessible et utile pour tous, partout dans le monde.',
     },
+    common: {
+      links: {
+        blog: 'Blog & Actus',
+        shop: 'Notre Boutique',
+        team: 'Notre Équipe',
+        services: 'Nos Services',
+        investors: 'Espace investisseurs',
+      },
+    },
     contact: {
       title: 'Contactez-nous',
       name: 'Nom complet',
@@ -152,6 +170,15 @@ export const translations: Record<Language, Translation> = {
     about: {
       title: 'About KR Global Solutions LTD',
       content: 'KR Global LTD is an innovative company specializing in digital solutions and e-commerce. We connect cutting-edge technologies to global market needs, offering tailored services to support our clients in their digital transformation. Our passionate team develops high-performance solutions that drive growth and innovation. We are committed to creating positive impact by making technology accessible and useful for everyone, everywhere in the world.',
+    },
+    common: {
+      links: {
+        blog: 'Blog & News',
+        shop: 'Our Shop',
+        team: 'Our Team',
+        services: 'Our Services',
+        investors: 'Investors Space',
+      },
     },
     contact: {
       title: 'Contact us',
