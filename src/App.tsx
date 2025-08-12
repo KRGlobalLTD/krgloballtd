@@ -42,7 +42,7 @@ function App() {
 
       <main className="flex-1">
         <HeroSection t={t} />
-        {SHOW_PRICING && <OffersSection />}
+        <OffersSection />
         {SHOW_PRICING && <QuizPack />}
         {/* ===== Section FAQ ===== */}
         <Suspense fallback={null}>
