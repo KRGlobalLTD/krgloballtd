@@ -8,6 +8,7 @@ import { Footer } from './components/Footer';
 import PricingSection from './components/PricingSection';
 import CategoriesGrid from '@/components/Pricing/CategoriesGrid';
 import FAQSection from '@/components/FAQSection';
+import PricingCards from '@/components/pricing/PricingCards';
 import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
@@ -42,6 +43,7 @@ function App() {
       <main>
         <HeroSection t={t} />
         {SHOW_PRICING && <PricingSection />}
+        <PricingCards locale={currentLanguage} />
         <AboutSection t={t} isRTL={isRTL} />
         {SHOW_PRICING && (
           <>
