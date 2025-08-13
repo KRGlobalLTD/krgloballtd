@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
 import { Translation } from '../data/translations';
 import HeroVideoCompat from '@/components/HeroVideoCompat';
+import CalendlyButton from '@/app/_components/CalendlyButton';
 
 interface HeroSectionProps {
   t: Translation;
@@ -28,6 +29,9 @@ export function HeroSection({ t }: HeroSectionProps) {
           {/* --- Video placed directly under the subtitle --- */}
           <div className="mt-6 md:mt-8">
             <HeroVideoCompat />
+          </div>
+          <div className="mt-6">
+            <CalendlyButton />
           </div>
         </motion.div>
       </div>

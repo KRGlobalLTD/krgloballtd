@@ -8,6 +8,7 @@ import { Footer } from './components/Footer';
 import OffersSection from '@/components/OffersSection';
 import QuizPack from '@/components/pricing/QuizPack';
 import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
+import CalendlyLoader from '@/app/_components/CalendlyLoader';
 
 const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
 // FAQ (lazy universel)
@@ -34,6 +35,7 @@ function App() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      <CalendlyLoader />
       <Header
         currentLanguage={currentLanguage}
         onLanguageChange={changeLanguage}
