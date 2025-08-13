@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 
 /** Types locaux (évite les imports qui cassent le build) */
 type Pack = {
@@ -42,7 +43,7 @@ const FALLBACK_DICT = {
         startNow: "Je commence aujourd’hui",
         bookPack: "Réserver ce pack",
         quote: "Obtenir mon devis gratuit",
-        bookMeeting: "Réserver un RDV",
+        bookMeeting: "RDV 30 min",
         whatsapp: "WhatsApp",
       },
       starter: {
@@ -98,13 +99,13 @@ const FALLBACK_DICT = {
         aiAdvanced: "Advanced AI",
         automations: "Automations",
       },
-      cta: {
-        startNow: "Start today",
-        bookPack: "Book this pack",
-        quote: "Get my free quote",
-        bookMeeting: "Book a meeting",
-        whatsapp: "WhatsApp",
-      },
+        cta: {
+          startNow: "Start today",
+          bookPack: "Book this pack",
+          quote: "Get my free quote",
+          bookMeeting: "Book 30 min",
+          whatsapp: "WhatsApp",
+        },
       starter: {
         title: "Starter Pack",
         subtitle: "Get launched today",
@@ -359,13 +360,17 @@ export default function OffersSection() {
                   <span className="btn-txt">{tf(p.ctas.primary.labelKey)}</span>
                 </a>
                 {p.ctas.secondary && (
-                  <a
-                    href={p.ctas.secondary.href}
-                    className="rounded-2xl border px-4 py-2 text-sm"
-                  >
-                    {tf(p.ctas.secondary.labelKey)}
-                  </a>
-                )}
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.openCalendly?.("popup");
+                      }}
+                      className="rounded-2xl border px-4 py-2 text-sm"
+                    >
+                      {tf(p.ctas.secondary.labelKey)}
+                    </a>
+                  )}
                 {p.ctas.whatsapp && (
                   <a
                     href={p.ctas.whatsapp.href}
@@ -380,8 +385,13 @@ export default function OffersSection() {
             </article>
           ))}
         </div>
+        <div className="mt-4">
+          <Link href="/booking" className="underline text-sm opacity-80 hover:opacity-100">
+            Voir le calendrier intégré
+          </Link>
+        </div>
       </div>
-    </section>
+      </section>
   );
 }
 

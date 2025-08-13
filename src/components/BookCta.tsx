@@ -4,8 +4,8 @@ export default function BookCta() {
   const isEN = prefix === '/en';
 
   return (
-    <a href={`${prefix}/book`} className="btn btn-primary">
-      {isEN ? 'Book a call' : 'Réserver un RDV'}
-    </a>
+      <a href={`${prefix}/book`} className="btn btn-primary">
+        {isEN ? 'Book 30 min' : 'RDV 30 min'}
+      </a>
   );
 }

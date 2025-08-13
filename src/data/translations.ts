@@ -214,9 +214,9 @@ export const translations: Record<Language, Translation> = {
       cta: {
         startNow: 'Je commence aujourd’hui',
         bookPack: 'Réserver ce pack',
-        quote: 'Obtenir mon devis gratuit',
-        bookMeeting: 'Réserver un RDV',
-        whatsapp: 'WhatsApp',
+          quote: 'Obtenir mon devis gratuit',
+          bookMeeting: 'RDV 30 min',
+          whatsapp: 'WhatsApp',
       },
       starter: {
         title: 'Pack Découverte',
@@ -340,9 +340,9 @@ export const translations: Record<Language, Translation> = {
       cta: {
         startNow: 'Start today',
         bookPack: 'Book this pack',
-        quote: 'Get my free quote',
-        bookMeeting: 'Book a meeting',
-        whatsapp: 'WhatsApp',
+          quote: 'Get my free quote',
+          bookMeeting: 'Book 30 min',
+          whatsapp: 'WhatsApp',
       },
       starter: {
         title: 'Starter Pack',
