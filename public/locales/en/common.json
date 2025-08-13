@@ -15,7 +15,7 @@
     },
     "cta": {
       "startNow": "Start today", "bookPack": "Book this pack",
-      "quote": "Get my free quote", "bookMeeting": "Book a meeting", "whatsapp": "WhatsApp"
+        "quote": "Get my free quote", "bookMeeting": "Book 30 min", "whatsapp": "WhatsApp"
     },
     "starter": {
       "title": "Starter Pack", "subtitle": "Get launched today",
