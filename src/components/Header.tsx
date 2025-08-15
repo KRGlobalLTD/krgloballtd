@@ -7,6 +7,7 @@ import { DarkZoneToggle } from './DarkZoneToggle';
 import { Menu, X } from "lucide-react";
 import { useBooking } from "@/context/BookingContext";
 import { useTranslation } from "react-i18next";
+import WhatsAppButton from './WhatsAppButton';
 
   interface HeaderProps {
     currentLanguage: Language;
@@ -43,6 +44,7 @@ import { useTranslation } from "react-i18next";
               {tI18n("booking.buttonCall")}
             </button>
           <SocialLinks variant="header" size={20} className="justify-end hidden md:flex" />
+          <WhatsAppButton className="hidden md:inline-flex" />
           <button
             className="md:hidden inline-flex items-center justify-center min-h-11 px-4 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50"
             onClick={() => setOpen((o) => !o)}
@@ -54,7 +56,10 @@ import { useTranslation } from "react-i18next";
       </div>
       {open && (
         <nav className="md:hidden border-t border-neutral-200 dz-border bg-white dz-card">
-          <SocialLinks variant="header" size={20} className="flex-col items-start p-4 gap-2" />
+          <div className="flex flex-col items-start p-4 gap-2">
+            <SocialLinks variant="header" size={20} className="flex-col items-start gap-2" />
+            <WhatsAppButton />
+          </div>
         </nav>
       )}
     </header>
