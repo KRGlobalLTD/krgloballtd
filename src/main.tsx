@@ -1,21 +1,35 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
-import LegalPage from './app/mentions-legales/page.tsx';
-import BookPage from './app/book/page.tsx';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 import './index.css';
 import { attachCalendlyEnhancer } from './bookingEnhancer';
 
-const rootElement = document.getElementById('root')!;
+// IMPORTANT : charger l'initialisation i18n AVANT tout hook/useTranslation
+import './i18n';
 
-createRoot(rootElement).render(
-  <StrictMode>
-    {window.location.pathname === '/mentions-legales'
-      ? <LegalPage />
-      : window.location.pathname === '/book'
-        ? <BookPage />
-        : <App />}
-  </StrictMode>,
+// Optionnel : I18nextProvider au cas où tu préfères expliciter le provider.
+// -> Si tu veux l'activer, décommente les 3 lignes correspondantes.
+// import { I18nextProvider } from 'react-i18next';
+// import i18n from './i18n';
+
+const rootEl = document.getElementById('root');
+if (!rootEl) {
+  throw new Error('#root not found in index.html');
+}
+
+ReactDOM.createRoot(rootEl).render(
+  <React.StrictMode>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      {/* 
+      // Si tu veux forcer le provider explicite :
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+      */}
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 requestAnimationFrame(() => attachCalendlyEnhancer());
