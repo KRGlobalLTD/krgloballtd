@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import { useBooking } from "@/context/BookingContext";
-import { Link } from "react-router-dom";
 
 /** Types locaux (évite les imports qui cassent le build) */
 type Pack = {
@@ -387,11 +386,7 @@ export default function OffersSection() {
             </article>
           ))}
         </div>
-        <div className="mt-4">
-          <Link to="/booking" className="underline text-sm opacity-80 hover:opacity-100">
-            Voir le calendrier intégré
-          </Link>
-        </div>
+          {/* Retiré : lien "Voir le calendrier intégré" */}
       </div>
       </section>
   );
