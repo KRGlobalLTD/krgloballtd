@@ -15,7 +15,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: [], // S'assurer que 'next/dynamic' n'est PAS listé ici
+      external: ['next/link']
     },
   },
 });
