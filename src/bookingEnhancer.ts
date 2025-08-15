@@ -5,6 +5,9 @@ import { createRoot } from "react-dom/client";
 import { CalendlyEmbed } from "./components/booking/CalendlyEmbed";
 
 type BoundHTMLElement = HTMLElement & { __calendlyBound?: boolean };
+interface CalendlyWindow extends Window {
+  __calendlyEnhancerLoaded?: boolean;
+}
 
 function openInNewTab(url: string) {
   window.open(url, "_blank", "noopener,noreferrer");
@@ -61,6 +64,10 @@ function bindNode(el: BoundHTMLElement, mode: "tab" | "modal", url: string, lang
 }
 
 export function attachCalendlyEnhancer() {
+  const w = window as CalendlyWindow;
+  if (w.__calendlyEnhancerLoaded) return;
+  w.__calendlyEnhancerLoaded = true;
+
   const lang = getCurrentLang();
   const url = lang === "en" ? CALENDLY.en : CALENDLY.fr;
 
