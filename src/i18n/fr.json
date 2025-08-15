@@ -1,7 +1,10 @@
 {
   "booking": {
-    "title": "Réserver 30 minutes",
-    "description": "Réservez un créneau sans quitter le site.",
-    "cta": "Réserver 30 min"
+    "title": "Réserver un appel (30 min)",
+    "close": "Fermer le calendrier",
+    "iframeTitle": "Calendly - Planification",
+    "buttonCall": "Réserver un appel",
+    "button30": "Réserver 30 minutes",
+    "buttonBook": "Réserver"
   }
 }

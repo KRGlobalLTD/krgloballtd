@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
+import { useBooking } from "@/context/BookingContext";
 import { Link } from "react-router-dom";
 
 /** Types locaux (évite les imports qui cassent le build) */
@@ -251,6 +252,7 @@ const tf = (key: string) => {
 };
 
 export default function OffersSection() {
+  const { openBooking } = useBooking();
   const [packs, setPacks] = useState<Pack[]>(PACKS_FALLBACK);
 
   useEffect(() => {
@@ -360,16 +362,16 @@ export default function OffersSection() {
                   <span className="btn-txt">{tf(p.ctas.primary.labelKey)}</span>
                 </a>
                 {p.ctas.secondary && (
-                    <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        window.openCalendly?.("popup");
-                      }}
-                      className="rounded-2xl border px-4 py-2 text-sm"
-                    >
-                      {tf(p.ctas.secondary.labelKey)}
-                    </a>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openBooking();
+                        }}
+                        className="rounded-2xl border px-4 py-2 text-sm"
+                      >
+                        {tf(p.ctas.secondary.labelKey)}
+                      </a>
                   )}
                 {p.ctas.whatsapp && (
                   <a

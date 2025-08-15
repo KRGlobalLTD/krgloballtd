@@ -4,14 +4,17 @@ import { motion } from 'framer-motion';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
 import { Translation } from '../data/translations';
 import HeroVideoCompat from '@/components/HeroVideoCompat';
-import CalendlyButton from '@/app/_components/CalendlyButton';
+import { useBooking } from '@/context/BookingContext';
+import { useTranslation } from 'react-i18next';
 
-interface HeroSectionProps {
-  t: Translation;
-}
+  interface HeroSectionProps {
+    t: Translation;
+  }
 
-export function HeroSection({ t }: HeroSectionProps) {
-  return (
+  export function HeroSection({ t }: HeroSectionProps) {
+    const { openBooking } = useBooking();
+    const { t: tI18n } = useTranslation();
+    return (
     <section className="flex items-center justify-center py-10 sm:py-20 bg-gradient-to-br from-white to-neutral-50 dz-bg dz-fg md:min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 text-center">
         {/* Title and Subtitle */}
@@ -30,9 +33,11 @@ export function HeroSection({ t }: HeroSectionProps) {
           <div className="mt-6 md:mt-8">
             <HeroVideoCompat />
           </div>
-          <div className="mt-6">
-            <CalendlyButton />
-          </div>
+            <div className="mt-6">
+              <button className="btn-primary" onClick={openBooking}>
+                {tI18n("booking.button30")}
+              </button>
+            </div>
         </motion.div>
       </div>
     </section>
