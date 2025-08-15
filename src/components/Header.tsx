@@ -5,7 +5,7 @@ import { Language, Translation } from '../data/translations';
 import KRLogoKR from "@/components/KRLogoKR";
 import { DarkZoneToggle } from './DarkZoneToggle';
 import { Menu, X } from "lucide-react";
-import { HeaderBookingLink } from "@/app/_components/HeaderBookingLink";
+import CalendlyButton from "@/components/CalendlyButton";
 
 interface HeaderProps {
   currentLanguage: Language;
@@ -33,7 +33,7 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
           <DarkZoneToggle label={t.nav.darkZone} />
         </div>
         <div className="flex items-center justify-end flex-1 overflow-hidden gap-2">
-          <HeaderBookingLink className="hidden sm:inline-flex text-sm" />
+          <CalendlyButton className="ml-4 hidden sm:inline-flex text-sm" />
           <SocialLinks variant="header" size={20} className="justify-end hidden md:flex" />
           <button
             className="md:hidden inline-flex items-center justify-center min-h-11 px-4 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50"

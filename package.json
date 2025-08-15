@@ -22,7 +22,9 @@
     "react-dom": "^18.3.1",
     "react-icons": "^4.11.0",
     "three-stdlib": "^2.36.0",
-    "tslib": "^2.8.1"
+    "tslib": "^2.8.1",
+    "i18next": "^23.11.5",
+    "react-i18next": "^14.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

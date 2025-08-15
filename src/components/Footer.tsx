@@ -1,5 +1,6 @@
 import React from 'react';
 import SocialLinks from '@/components/SocialLinks';
+import CalendlyButton from "@/components/CalendlyButton";
 
 export function Footer() {
   const pathname =
@@ -31,6 +32,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col sm:items-end gap-2 w-full min-w-0">
           <SocialLinks variant="footer" size={22} className="justify-center sm:justify-end" />
+          <CalendlyButton className="mt-4" />
         </div>
       </div>
     </footer>
