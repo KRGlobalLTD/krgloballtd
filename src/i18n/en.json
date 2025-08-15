@@ -1,7 +1,10 @@
 {
   "booking": {
-    "title": "Book 30 minutes",
-    "description": "Book a slot without leaving the site.",
-    "cta": "Book 30 min"
+    "title": "Book a Call (30 min)",
+    "close": "Close calendar",
+    "iframeTitle": "Calendly - Scheduling",
+    "buttonCall": "Book a Call",
+    "button30": "Book 30 minutes",
+    "buttonBook": "Book Now"
   }
 }

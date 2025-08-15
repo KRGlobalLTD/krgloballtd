@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
-import { attachCalendlyEnhancer } from './bookingEnhancer';
+import { BookingProvider } from './context/BookingContext';
 
 // IMPORTANT : charger l'initialisation i18n AVANT tout hook/useTranslation
 import './i18n';
@@ -21,15 +21,15 @@ if (!rootEl) {
 ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      {/* 
+      {/*
       // Si tu veux forcer le provider explicite :
       <I18nextProvider i18n={i18n}>
         <App />
       </I18nextProvider>
       */}
-      <App />
+      <BookingProvider>
+        <App />
+      </BookingProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
-
-requestAnimationFrame(() => attachCalendlyEnhancer());
