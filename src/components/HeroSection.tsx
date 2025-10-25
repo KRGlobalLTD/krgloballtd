@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 // import { ExternalLink } from 'lucide-react';
 import InfiniteHeadline from '@/components/InfiniteHeadline';
 import { Translation } from '../data/translations';
-import HeroVideoCompat from '@/components/HeroVideoCompat';
+import HeroVideoDesktopFix from '@/components/HeroVideoDesktopFix';
 
   interface HeroSectionProps {
     t: Translation;
@@ -27,7 +27,7 @@ import HeroVideoCompat from '@/components/HeroVideoCompat';
 
           {/* --- Video placed directly under the subtitle --- */}
           <div className="mt-6 md:mt-8">
-            <HeroVideoCompat />
+            <HeroVideoDesktopFix />
           </div>
           <div className="mt-6" aria-hidden="true" />
         </motion.div>
