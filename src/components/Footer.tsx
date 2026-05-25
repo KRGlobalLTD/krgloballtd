@@ -16,22 +16,23 @@ export function Footer() {
   ];
 
   return (
-    <footer id="site-footer" className="bg-black text-white py-6">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 sm:grid-cols-2 gap-4 items-start text-sm">
-        <div className="flex flex-col gap-2 w-full min-w-0">
-          <ul>
+    <footer id="site-footer" className="bg-black border-t border-white/[0.06] py-8">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 sm:grid-cols-2 gap-4 items-start text-xs text-neutral-600">
+        <div className="flex flex-col gap-1.5 w-full min-w-0">
+          <ul className="space-y-1.5">
             {links.map((link, i) => (
               <li key={i}>
-                <a href={link.href} className={link.className}>
+                <a href={link.href} className={`hover:text-neutral-300 transition-colors ${link.className ?? ''}`}>
                   {link.label}
                 </a>
               </li>
             ))}
           </ul>
+          <p className="mt-2 text-neutral-700">© KR Global Solutions LTD 2025 · London, UK</p>
         </div>
-          <div className="flex flex-col sm:items-end gap-2 w-full min-w-0">
-            <SocialLinks variant="footer" size={22} className="justify-center sm:justify-end" />
-          </div>
+        <div className="flex flex-col sm:items-end gap-2 w-full min-w-0">
+          <SocialLinks variant="footer" size={18} className="justify-center sm:justify-end" />
+        </div>
       </div>
     </footer>
   );

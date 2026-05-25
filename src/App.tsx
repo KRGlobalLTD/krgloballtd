@@ -9,7 +9,7 @@ function App() {
   const { currentLanguage, changeLanguage, t } = useLanguage();
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col bg-black">
       <Header
         currentLanguage={currentLanguage}
         onLanguageChange={changeLanguage}

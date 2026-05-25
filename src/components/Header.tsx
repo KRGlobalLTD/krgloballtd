@@ -15,7 +15,7 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-neutral-200">
+    <header className="sticky top-0 z-[100] bg-black/80 backdrop-blur-md border-b border-white/[0.06]">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
 
         <div className="flex items-center gap-3 min-w-0">
@@ -32,9 +32,9 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
         </div>
 
         <div className="flex items-center justify-end flex-1 overflow-hidden gap-2">
-          <SocialLinks variant="header" size={20} className="justify-end hidden md:flex" />
+          <SocialLinks variant="header" size={18} className="justify-end hidden md:flex" />
           <button
-            className="md:hidden inline-flex items-center justify-center min-h-11 px-4 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50"
+            className="md:hidden inline-flex items-center justify-center min-h-11 px-4 rounded-full text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? 'Fermer le menu' : 'Menu'}
           >
@@ -45,9 +45,9 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
       </div>
 
       {open && (
-        <nav className="md:hidden border-t border-neutral-200 bg-white">
+        <nav className="md:hidden border-t border-white/[0.06] bg-black">
           <div className="flex flex-col items-start p-4 gap-3">
-            <SocialLinks variant="header" size={20} className="flex-col items-start gap-3" />
+            <SocialLinks variant="header" size={18} className="flex-col items-start gap-3" />
           </div>
         </nav>
       )}

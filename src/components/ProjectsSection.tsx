@@ -69,11 +69,11 @@ export default function ProjectsSection({ lang }: { lang: Language }) {
   const c = content[lang];
 
   return (
-    <section id="projects" className="py-24 sm:py-32 border-t border-neutral-100">
+    <section id="projects" className="py-24 sm:py-32 bg-black border-t border-white/[0.06]">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
 
         <motion.p
-          className="text-xs uppercase tracking-[0.22em] text-neutral-400 mb-14"
+          className="text-[10px] uppercase tracking-[0.28em] text-neutral-600 mb-14"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -82,7 +82,7 @@ export default function ProjectsSection({ lang }: { lang: Language }) {
           {c.label}
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.06]">
           {c.projects.map((project, i) => (
             <motion.a
               key={project.id}
@@ -93,32 +93,35 @@ export default function ProjectsSection({ lang }: { lang: Language }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.6 }}
-              className="group block rounded-2xl border border-neutral-200 p-8 sm:p-10 hover:border-neutral-900 transition-all duration-200"
+              className="group block bg-black p-8 sm:p-12 hover:bg-[#0a0a0a] transition-colors"
             >
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-[10px] uppercase tracking-widest text-neutral-400 border border-neutral-200 rounded-full px-3 py-1">
+              <div className="flex items-center justify-between mb-10">
+                <span className="text-[10px] uppercase tracking-widest text-neutral-600">
                   {project.status}
                 </span>
                 <ExternalLink
-                  size={15}
-                  className="text-neutral-300 group-hover:text-neutral-900 transition-colors"
+                  size={14}
+                  className="text-neutral-700 group-hover:text-white transition-colors"
                 />
               </div>
 
-              <h3 className="text-3xl sm:text-4xl font-bold tracking-tight">
+              <h3
+                className="font-bold tracking-tight text-white leading-[0.95]"
+                style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+              >
                 {project.name}
               </h3>
-              <p className="mt-2 text-neutral-500 text-lg">{project.tagline}</p>
+              <p className="mt-3 text-neutral-500 text-base">{project.tagline}</p>
 
-              <p className="mt-5 text-sm text-neutral-500 leading-relaxed">
+              <p className="mt-5 text-sm text-neutral-600 leading-relaxed">
                 {project.description}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-2">
+              <div className="mt-10 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs border border-neutral-200 rounded-full px-3 py-1 text-neutral-500"
+                    className="text-[10px] uppercase tracking-wider border border-white/10 rounded-full px-3 py-1 text-neutral-600 group-hover:border-white/20 transition-colors"
                   >
                     {tag}
                   </span>
@@ -127,6 +130,7 @@ export default function ProjectsSection({ lang }: { lang: Language }) {
             </motion.a>
           ))}
         </div>
+
       </div>
     </section>
   );
