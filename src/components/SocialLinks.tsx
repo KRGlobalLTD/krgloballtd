@@ -15,17 +15,39 @@ export const socialLinks = [
 
 export default function SocialLinks({
   className,
-  size = 24,
+  size = 16,
   variant = "header",
 }: {
   className?: string;
   size?: number;
   variant?: Variant;
 }) {
-  const spacing = variant === "header" ? "gap-3 sm:gap-4" : "gap-4 sm:gap-5";
-  const item = "inline-flex items-center justify-center min-w-[44px] min-h-[44px]";
+  const isFooter = variant === "footer";
+
+  if (isFooter) {
+    return (
+      <nav aria-label="Réseaux sociaux" className={`flex flex-wrap gap-5 ${className || ""}`}>
+        {socialLinks.map((link) => (
+          <a
+            key={link.id}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={link.label}
+            className="flex items-center gap-1.5 text-xs text-neutral-500 hover:text-black transition-colors group"
+          >
+            <span className="opacity-60 group-hover:opacity-100 transition-opacity">
+              {link.icon(13)}
+            </span>
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    );
+  }
+
   return (
-    <nav aria-label="Réseaux sociaux" className={`flex flex-wrap ${spacing} ${className || ""}`}>
+    <nav aria-label="Réseaux sociaux" className={`flex items-center gap-4 ${className || ""}`}>
       {socialLinks.map((link) => (
         <a
           key={link.id}
@@ -33,7 +55,7 @@ export default function SocialLinks({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={link.label}
-          className={item}
+          className="text-neutral-400 hover:text-black transition-colors"
         >
           {link.icon(size)}
         </a>

@@ -4,42 +4,36 @@ import * as THREE from 'three';
 
 function OuterCube() {
   const ref = useRef<THREE.LineSegments>(null);
-
   useFrame(({ clock }) => {
     if (!ref.current) return;
     ref.current.rotation.x = clock.elapsedTime * 0.09;
     ref.current.rotation.y = clock.elapsedTime * 0.14;
   });
-
   const edges = useMemo(
     () => new THREE.EdgesGeometry(new THREE.BoxGeometry(2.4, 2.4, 2.4)),
     []
   );
-
   return (
     <lineSegments ref={ref} geometry={edges}>
-      <lineBasicMaterial color="#ffffff" />
+      <lineBasicMaterial color="#000000" />
     </lineSegments>
   );
 }
 
 function InnerCube() {
   const ref = useRef<THREE.LineSegments>(null);
-
   useFrame(({ clock }) => {
     if (!ref.current) return;
     ref.current.rotation.x = -clock.elapsedTime * 0.06;
     ref.current.rotation.y = -clock.elapsedTime * 0.10;
   });
-
   const edges = useMemo(
     () => new THREE.EdgesGeometry(new THREE.BoxGeometry(1.3, 1.3, 1.3)),
     []
   );
-
   return (
     <lineSegments ref={ref} geometry={edges}>
-      <lineBasicMaterial color="#ffffff" opacity={0.3} transparent />
+      <lineBasicMaterial color="#000000" opacity={0.2} transparent />
     </lineSegments>
   );
 }

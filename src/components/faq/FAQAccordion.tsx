@@ -20,7 +20,7 @@ function Item({ qa, idx }: { qa: QA; idx: number }) {
   return (
     <details
       onToggle={onToggle}
-      className="rounded-2xl border bg-white/60 dark:bg-zinc-900/60 p-4 md:p-5"
+      className="border-b border-neutral-100 py-4 md:py-5"
     >
       <summary
         className="cursor-pointer list-none select-none flex items-center justify-between gap-3 text-base md:text-lg font-medium"
@@ -50,7 +50,7 @@ export default function FAQAccordion({ locale = "fr", className }: Props) {
     <section id="faq" aria-labelledby="faq-title" className={["w-full", className].filter(Boolean).join(" ")}>
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <header className="mb-5 md:mb-7">
-          <h2 id="faq-title" className="text-3xl md:text-4xl font-extrabold">FAQ</h2>
+          <h2 id="faq-title" className="text-3xl md:text-4xl font-bold text-black">FAQ</h2>
         </header>
         <div className="space-y-3 md:space-y-4">
           {data.map((qa, i) => (
