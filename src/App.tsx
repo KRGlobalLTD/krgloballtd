@@ -1,62 +1,27 @@
-import React, { Suspense } from 'react';
-import { motion } from 'framer-motion';
 import { useLanguage } from './hooks/useLanguage';
 import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
-import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
-import OffersSection from '@/components/OffersSection';
-import QuizPack from '@/components/pricing/QuizPack';
-import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
-
-const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
-// FAQ (lazy universel)
-const FAQAccordion = React.lazy(() => import('@/components/faq/FAQAccordion'));
+import HeroNew from './components/HeroNew';
+import ProjectsSection from './components/ProjectsSection';
+import ContactSection from './components/ContactSection';
 
 function App() {
-  const { currentLanguage, changeLanguage, t, isRTL } = useLanguage();
-  const [showParticles, setShowParticles] = React.useState(false);
-
-  React.useEffect(() => {
-    if (!ENABLE_DZ_PARTICLES) return;
-    const body = document.body;
-    const update = () => setShowParticles(body.classList.contains('dark-zone'));
-    const observer = new MutationObserver(update);
-    observer.observe(body, { attributes: true, attributeFilter: ['class'] });
-    update();
-    return () => observer.disconnect();
-  }, []);
+  const { currentLanguage, changeLanguage, t } = useLanguage();
 
   return (
-    <motion.div
-      className="flex min-h-screen flex-col bg-white dz-bg dz-fg"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="flex min-h-screen flex-col bg-white">
       <Header
         currentLanguage={currentLanguage}
         onLanguageChange={changeLanguage}
         t={t}
       />
-
       <main className="flex-1">
-        <HeroSection t={t} />
-        <OffersSection />
-        {SHOW_PRICING && <QuizPack />}
-        {/* ===== Section FAQ ===== */}
-        <Suspense fallback={null}>
-          <FAQAccordion />
-        </Suspense>
-        <AboutSection t={t} isRTL={isRTL} />
+        <HeroNew lang={currentLanguage} />
+        <ProjectsSection lang={currentLanguage} />
+        <ContactSection lang={currentLanguage} />
       </main>
       <Footer />
-      {ENABLE_DZ_PARTICLES && showParticles && (
-        <Suspense fallback={null}>
-          <DarkZoneParticles />
-        </Suspense>
-      )}
-    </motion.div>
+    </div>
   );
 }
 
