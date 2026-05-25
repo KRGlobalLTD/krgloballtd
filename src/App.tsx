@@ -12,22 +12,24 @@ import LegalPage from './app/mentions-legales/page';
 const FAQAccordion = lazy(() => import('@/components/faq/FAQAccordion'));
 
 function MainPage() {
-  const { currentLanguage, t } = useLanguage();
+  const { currentLanguage } = useLanguage();
+  const faqLabel = currentLanguage === 'fr' ? 'Questions fréquentes' : 'FAQ';
+
   return (
     <>
       <HeroNew lang={currentLanguage} />
       <CompanySection lang={currentLanguage} />
       <ProjectsSection lang={currentLanguage} />
-      <Suspense fallback={null}>
-        <section id="faq" className="py-24 sm:py-32 border-t border-neutral-100 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 md:px-8">
-            <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-400 mb-12">
-              {currentLanguage === 'fr' ? 'Questions fréquentes' : 'FAQ'}
-            </p>
+      <section id="faq" className="py-24 sm:py-32 bg-black border-t border-white/[0.06]">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8">
+          <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-600 mb-12">
+            {faqLabel}
+          </p>
+          <Suspense fallback={null}>
             <FAQAccordion locale={currentLanguage} />
-          </div>
-        </section>
-      </Suspense>
+          </Suspense>
+        </div>
+      </section>
       <ContactSection lang={currentLanguage} />
     </>
   );
@@ -37,7 +39,7 @@ function App() {
   const { currentLanguage, changeLanguage, t } = useLanguage();
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col bg-black">
       <Header
         currentLanguage={currentLanguage}
         onLanguageChange={changeLanguage}

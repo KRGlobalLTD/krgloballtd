@@ -15,7 +15,7 @@ function OuterCube() {
   );
   return (
     <lineSegments ref={ref} geometry={edges}>
-      <lineBasicMaterial color="#000000" />
+      <lineBasicMaterial color="#ffffff" />
     </lineSegments>
   );
 }
@@ -33,7 +33,7 @@ function InnerCube() {
   );
   return (
     <lineSegments ref={ref} geometry={edges}>
-      <lineBasicMaterial color="#000000" opacity={0.2} transparent />
+      <lineBasicMaterial color="#ffffff" opacity={0.25} transparent />
     </lineSegments>
   );
 }
@@ -41,7 +41,7 @@ function InnerCube() {
 export default function FloatingShape() {
   return (
     <Canvas
-      camera={{ position: [0, 0, 5.5], fov: 38 }}
+      camera={{ position: [0, 0, 5], fov: 40 }}
       style={{ width: '100%', height: '100%', background: 'transparent' }}
       gl={{ alpha: true, antialias: true }}
     >
