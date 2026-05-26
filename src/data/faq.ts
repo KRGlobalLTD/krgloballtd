@@ -3,7 +3,7 @@ export type QA = { q: string; a: string };
 export const faqFR: QA[] = [
   {
     q: "Qu'est-ce que KR Global Solutions LTD ?",
-    a: "KR Global Solutions LTD est une entreprise digitale basée à Londres (UK), fondée par Karim Hammouche et Raphaël Theuillon. Nous concevons des solutions digitales et des systèmes IA pour aider les entreprises à se transformer et à automatiser leurs opérations.",
+    a: "KR Global Solutions LTD est une entreprise digitale basée à Londres (UK). Nous concevons des solutions digitales et des systèmes IA pour aider les entreprises à se transformer et à automatiser leurs opérations.",
   },
   {
     q: "Quels sont vos projets actuels ?",
@@ -38,7 +38,7 @@ export const faqFR: QA[] = [
 export const faqEN: QA[] = [
   {
     q: "What is KR Global Solutions LTD?",
-    a: "KR Global Solutions LTD is a digital company based in London, UK, founded by Karim Hammouche and Raphaël Theuillon. We build digital solutions and AI systems to help businesses transform and automate their operations.",
+    a: "KR Global Solutions LTD is a digital company based in London, UK. We build digital solutions and AI systems to help businesses transform and automate their operations.",
   },
   {
     q: "What are your current projects?",

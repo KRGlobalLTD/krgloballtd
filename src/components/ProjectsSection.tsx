@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
 import type { Language } from '../data/translations';
 
 interface Project {
@@ -95,20 +94,9 @@ export default function ProjectsSection({ lang }: { lang: Language }) {
               transition={{ delay: i * 0.12, duration: 0.6 }}
               className="bg-white p-8 sm:p-12 group"
             >
-              <div className="flex items-center justify-between mb-10">
-                <span className="text-[10px] uppercase tracking-widest text-neutral-400">
-                  {project.status}
-                </span>
-                <a
-                  href={project.siteUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-neutral-400 hover:text-black transition-colors"
-                  aria-label={`Visiter ${project.name}`}
-                >
-                  <ExternalLink size={14} />
-                </a>
-              </div>
+              <span className="text-[10px] uppercase tracking-widest text-neutral-400 block mb-10">
+                {project.status}
+              </span>
 
               <h3
                 className="font-bold tracking-tight text-black leading-[0.95]"
@@ -122,36 +110,15 @@ export default function ProjectsSection({ lang }: { lang: Language }) {
                 {project.description}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] uppercase tracking-wider border border-black/10 rounded-full px-3 py-1 text-neutral-500"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-8 flex gap-5 text-xs">
+              <div className="mt-8">
                 <a
                   href={project.siteUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-black border-b border-black/20 pb-px hover:border-black transition-colors"
+                  className="text-xs text-black border-b border-black/20 pb-px hover:border-black transition-colors"
                 >
                   {lang === 'fr' ? 'Voir le site →' : 'Visit site →'}
                 </a>
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-neutral-400 border-b border-neutral-300 pb-px hover:text-neutral-700 hover:border-neutral-500 transition-colors"
-                  >
-                    GitHub
-                  </a>
-                )}
               </div>
             </motion.div>
           ))}
