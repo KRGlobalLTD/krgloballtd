@@ -186,7 +186,7 @@ export const translations: Record<Language, Translation> = {
     footer: {
       legal: 'Mentions légales',
       copyright: '© KR Global LTD 2025',
-      legalNotice: 'KR GLOBAL SOLUTIONS LTD · Company No. 16517532 · 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UK · Private Limited Company\nDirectors: Karim Hammouche & Raphaël Theuillon · SIC: 46190 · 47910 · 62012 · 62090 · Email: karim@karimhammouche.com',
+      legalNotice: 'KR GLOBAL SOLUTIONS LTD · Company No. 16517532 · 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UK · Private Limited Company · SIC: 46190 · 47910 · 62012 · 62090 · Email: contact@krglobalsolutionsltd.com',
       social: {
         tiktok: 'TikTok',
         instagram: 'Instagram',
@@ -253,8 +253,8 @@ export const translations: Record<Language, Translation> = {
       },
     },
     portfolio: {
-      karim: 'Portfolio Karim',
-      raphael: 'Portfolio Raphaël',
+      karim: 'Portfolio K',
+      raphael: 'Portfolio R',
     },
   },
   en: {
@@ -312,7 +312,7 @@ export const translations: Record<Language, Translation> = {
     footer: {
       legal: 'Legal notice',
       copyright: '© KR Global LTD 2025',
-      legalNotice: 'KR GLOBAL SOLUTIONS LTD · Company No. 16517532 · 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UK · Private Limited Company\nDirectors: Karim Hammouche & Raphaël Theuillon · SIC: 46190 · 47910 · 62012 · 62090 · Email: karim@karimhammouche.com',
+      legalNotice: 'KR GLOBAL SOLUTIONS LTD · Company No. 16517532 · 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UK · Private Limited Company · SIC: 46190 · 47910 · 62012 · 62090 · Email: contact@krglobalsolutionsltd.com',
       social: {
         tiktok: 'TikTok',
         instagram: 'Instagram',
@@ -379,8 +379,8 @@ export const translations: Record<Language, Translation> = {
       },
     },
     portfolio: {
-      karim: "Karim's Portfolio",
-      raphael: "Raphaël's Portfolio",
+      karim: 'Portfolio K',
+      raphael: 'Portfolio R',
     },
   },
 };

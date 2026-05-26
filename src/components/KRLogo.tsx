@@ -94,19 +94,6 @@ export default function KRLogo({ t }: KRLogoProps) {
             onMouseLeave={handleLeave}
           >
             {letter}
-            <AnimatePresence>
-              {showTooltip === letter && (
-                <motion.div
-                  variants={tooltipVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="absolute left-1/2 -translate-x-1/2 -top-6 bg-background/90 text-foreground text-xs px-2 py-1 rounded-md shadow-md whitespace-nowrap"
-                >
-                  {letter === "K" ? t.portfolio.karim : t.portfolio.raphael}
-                </motion.div>
-              )}
-            </AnimatePresence>
           </motion.span>
         );
       })}
