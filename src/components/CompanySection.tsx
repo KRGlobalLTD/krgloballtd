@@ -36,16 +36,6 @@ export default function CompanySection({ lang }: { lang: Language }) {
             <p className="text-neutral-500 leading-relaxed text-base">
               {t.about.content}
             </p>
-
-            <div className="mt-8 text-sm">
-              <p className="text-[10px] uppercase tracking-widest text-neutral-400 mb-1">
-                {lang === 'fr' ? 'Siège social' : 'Registered office'}
-              </p>
-              <p className="text-neutral-500">
-                71–75 Shelton Street, Covent Garden, London WC2H 9JQ, UK<br />
-                Company No. 16517532
-              </p>
-            </div>
           </motion.div>
 
         </div>
