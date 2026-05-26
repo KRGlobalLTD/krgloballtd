@@ -86,7 +86,7 @@ export default function KRLogoIdlePortal({
         <motion.button
           ref={k.anchorRef}
           type="button"
-          aria-label="Portfolio Karim"
+          aria-label="Portfolio K"
           className="font-bold text-base md:text-lg leading-none"
           variants={idle} animate="animate" whileHover="whileHover" whileTap="whileTap"
           onMouseEnter={k.update}
@@ -99,7 +99,7 @@ export default function KRLogoIdlePortal({
         <motion.button
           ref={r.anchorRef}
           type="button"
-          aria-label="Portfolio Raphaël"
+          aria-label="Portfolio R"
           className="font-bold text-base md:text-lg leading-none"
           variants={idle} animate="animate" whileHover="whileHover" whileTap="whileTap"
           onMouseEnter={r.update}
@@ -110,9 +110,8 @@ export default function KRLogoIdlePortal({
         </motion.button>
       </div>
 
-      {/* Tooltips portalisées (pas coupées par le header) */}
-      {showTooltips && <TooltipPortal text="Portfolio Karim" pos={k.pos} />}
-      {showTooltips && <TooltipPortal text="Portfolio Raphaël" pos={r.pos} />}
+      {showTooltips && <TooltipPortal text="Portfolio K" pos={k.pos} />}
+      {showTooltips && <TooltipPortal text="Portfolio R" pos={r.pos} />}
 
       {/* Respect prefers-reduced-motion */}
       <style jsx global>{`

@@ -1,62 +1,59 @@
-import React, { Suspense } from 'react';
-import { motion } from 'framer-motion';
+import { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { useLanguage } from './hooks/useLanguage';
 import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
-import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
-import OffersSection from '@/components/OffersSection';
-import QuizPack from '@/components/pricing/QuizPack';
-import { ENABLE_DZ_PARTICLES, SHOW_PRICING } from './featureFlags';
+import HeroNew from './components/HeroNew';
+import ProjectsSection from './components/ProjectsSection';
+import ContactSection from './components/ContactSection';
+import CompanySection from './components/CompanySection';
+import LegalPage from './app/mentions-legales/page';
 
-const DarkZoneParticles = React.lazy(() => import('./components/DarkZoneParticles'));
-// FAQ (lazy universel)
-const FAQAccordion = React.lazy(() => import('@/components/faq/FAQAccordion'));
+const FAQAccordion = lazy(() => import('@/components/faq/FAQAccordion'));
 
-function App() {
-  const { currentLanguage, changeLanguage, t, isRTL } = useLanguage();
-  const [showParticles, setShowParticles] = React.useState(false);
-
-  React.useEffect(() => {
-    if (!ENABLE_DZ_PARTICLES) return;
-    const body = document.body;
-    const update = () => setShowParticles(body.classList.contains('dark-zone'));
-    const observer = new MutationObserver(update);
-    observer.observe(body, { attributes: true, attributeFilter: ['class'] });
-    update();
-    return () => observer.disconnect();
-  }, []);
+function MainPage() {
+  const { currentLanguage } = useLanguage();
+  const faqLabel = currentLanguage === 'fr' ? 'Questions fréquentes' : 'FAQ';
 
   return (
-    <motion.div
-      className="flex min-h-screen flex-col bg-white dz-bg dz-fg"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <>
+      <HeroNew lang={currentLanguage} />
+      <CompanySection lang={currentLanguage} />
+      <ProjectsSection lang={currentLanguage} />
+      <section id="faq" className="py-24 sm:py-32 bg-white border-t border-black/[0.06]">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8">
+          <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-400 mb-12">
+            {faqLabel}
+          </p>
+          <Suspense fallback={null}>
+            <FAQAccordion locale={currentLanguage} />
+          </Suspense>
+        </div>
+      </section>
+      <ContactSection lang={currentLanguage} />
+    </>
+  );
+}
+
+function App() {
+  const { currentLanguage, changeLanguage, t } = useLanguage();
+
+  return (
+    <div className="flex min-h-screen flex-col bg-white">
       <Header
         currentLanguage={currentLanguage}
         onLanguageChange={changeLanguage}
         t={t}
       />
-
       <main className="flex-1">
-        <HeroSection t={t} />
-        <OffersSection />
-        {SHOW_PRICING && <QuizPack />}
-        {/* ===== Section FAQ ===== */}
-        <Suspense fallback={null}>
-          <FAQAccordion />
-        </Suspense>
-        <AboutSection t={t} isRTL={isRTL} />
+        <Routes>
+          <Route index element={<MainPage />} />
+          <Route path="mentions-legales" element={<LegalPage />} />
+          <Route path="en/mentions-legales" element={<LegalPage />} />
+        </Routes>
       </main>
       <Footer />
-      {ENABLE_DZ_PARTICLES && showParticles && (
-        <Suspense fallback={null}>
-          <DarkZoneParticles />
-        </Suspense>
-      )}
-    </motion.div>
+    </div>
   );
 }
 
