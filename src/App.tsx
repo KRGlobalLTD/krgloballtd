@@ -20,9 +20,9 @@ function MainPage() {
       <HeroNew lang={currentLanguage} />
       <CompanySection lang={currentLanguage} />
       <ProjectsSection lang={currentLanguage} />
-      <section id="faq" className="py-24 sm:py-32 bg-black border-t border-white/[0.06]">
+      <section id="faq" className="py-24 sm:py-32 bg-white border-t border-black/[0.06]">
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-600 mb-12">
+          <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-400 mb-12">
             {faqLabel}
           </p>
           <Suspense fallback={null}>
@@ -39,7 +39,7 @@ function App() {
   const { currentLanguage, changeLanguage, t } = useLanguage();
 
   return (
-    <div className="flex min-h-screen flex-col bg-black">
+    <div className="flex min-h-screen flex-col bg-white">
       <Header
         currentLanguage={currentLanguage}
         onLanguageChange={changeLanguage}

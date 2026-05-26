@@ -15,17 +15,17 @@ function Item({ qa, idx }: { qa: QA; idx: number }) {
   return (
     <details
       onToggle={onToggle}
-      className="border-b border-white/[0.07] py-5"
+      className="border-b border-black/[0.08] py-5"
     >
       <summary
-        className="cursor-pointer list-none select-none flex items-center justify-between gap-3 text-sm md:text-base font-medium text-white"
+        className="cursor-pointer list-none select-none flex items-center justify-between gap-3 text-sm md:text-base font-medium text-black"
         aria-controls={`${id}-panel`}
         aria-expanded={open}
       >
         <span>{qa.q}</span>
         <span
           aria-hidden
-          className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/20 text-white/60 shrink-0 text-xs"
+          className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-black/20 text-black/50 shrink-0 text-xs"
         >
           {open ? "–" : "+"}
         </span>
@@ -45,7 +45,7 @@ export default function FAQAccordion({ locale = "fr", className }: Props) {
   return (
     <section id="faq" aria-labelledby="faq-title" className={["w-full", className].filter(Boolean).join(" ")}>
       <div className="max-w-3xl">
-        <h2 id="faq-title" className="text-3xl md:text-4xl font-bold text-white mb-10">
+        <h2 id="faq-title" className="text-3xl md:text-4xl font-bold text-black mb-10">
           FAQ
         </h2>
         <div>

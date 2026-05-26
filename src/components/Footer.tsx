@@ -13,7 +13,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-start">
 
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-neutral-700 mb-3">
+            <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-3">
               KR Global Solutions LTD
             </p>
             <p className="text-xs text-neutral-600 leading-relaxed">
@@ -25,7 +25,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-neutral-700 mb-3">Liens</p>
+            <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-3">Liens</p>
             <ul className="space-y-2 text-xs text-neutral-600">
               <li>
                 <a
@@ -47,7 +47,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-neutral-700 mb-3">
+            <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-3">
               Réseaux sociaux
             </p>
             <SocialLinks variant="footer" className="flex-col items-start gap-2.5" />

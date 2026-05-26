@@ -45,8 +45,8 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  background: #000;
-  color: #f0f0f0;
+  background: #fff;
+  color: #111;
 }
 
 /* SAFE-GUARD: fluid typography scales across devices */
@@ -61,6 +61,16 @@ body {
 .fs-base { font-size: var(--fs-base); }
 .fs-lg { font-size: var(--fs-lg); }
 .fs-xl { font-size: var(--fs-xl); }
+
+/* Marquee / infinite ticker */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee linear var(--marquee-duration, 30s) infinite;
+  will-change: transform;
+}
 
 /* Custom animations */
 @keyframes orbital {

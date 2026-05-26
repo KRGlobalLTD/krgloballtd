@@ -18,10 +18,10 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
   const { t: tI18n } = useTranslation();
 
   return (
-    <header className="sticky top-0 z-[100] bg-black/80 backdrop-blur-md border-b border-white/[0.05]">
+    <header className="sticky top-0 z-[100] bg-white/90 backdrop-blur-md border-b border-black/[0.07]">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
 
-        <div className="flex items-center gap-3 min-w-0 text-white">
+        <div className="flex items-center gap-3 min-w-0 text-black">
           <KRLogoKR
             intensity="max"
             hrefK="https://www.karimhammouche.com/"
@@ -36,13 +36,13 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
 
         <div className="flex items-center gap-3">
           <button
-            className="hidden sm:inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-1.5 text-xs font-medium text-white hover:bg-white hover:text-black transition-colors whitespace-nowrap"
+            className="hidden sm:inline-flex items-center justify-center rounded-full border border-black/20 px-5 py-1.5 text-xs font-medium text-black hover:bg-black hover:text-white transition-colors whitespace-nowrap"
             onClick={openBooking}
           >
             {tI18n('booking.buttonCall')}
           </button>
           <button
-            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full text-white hover:bg-white/10 transition-colors"
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full text-black hover:bg-black/10 transition-colors"
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? 'Fermer le menu' : 'Menu'}
           >
@@ -53,10 +53,10 @@ export function Header({ currentLanguage, onLanguageChange, t }: HeaderProps) {
       </div>
 
       {open && (
-        <nav className="md:hidden border-t border-white/[0.05] bg-black">
+        <nav className="md:hidden border-t border-black/[0.07] bg-white">
           <div className="container mx-auto px-4 py-5 flex flex-col gap-4">
             <button
-              className="self-start rounded-full border border-white/20 px-5 py-2 text-sm text-white font-medium hover:bg-white hover:text-black transition-colors"
+              className="self-start rounded-full border border-black/20 px-5 py-2 text-sm text-black font-medium hover:bg-black hover:text-white transition-colors"
               onClick={() => { setOpen(false); openBooking(); }}
             >
               {tI18n('booking.buttonCall')}
